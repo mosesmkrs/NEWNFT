@@ -222,7 +222,7 @@ export default function Table() {
     <div className="flex flex-col flex-nowrap items-center w-full mb-12">
       <div className="w-full flex flex-col gap-2 flex-nowrap md:w-4/5 md:gap-4 lg:flex-row  lg:gap-2">
         <div className="hidden md:inline-flex w-4/5 lg:w-fit">
-          <h3 className="text-white text-2xl font-medium md:text-4xl whitespace-nowrap">Top NFT Collections</h3>
+          <h3 className=" text-2xl font-medium md:text-4xl whitespace-nowrap">Top NFT Collections</h3>
         </div>
 
         <div className="flex flex-col-reverse w-full gap-2 items-center md:flex-row md:justify-between whitespace-nowrap ">
@@ -262,7 +262,7 @@ export default function Table() {
             </div>
 
             <span
-              className="hidden md:inline-flex whitespace-nowrap text-sm py-2 px-5 dark:bg-[#18191b] text-white border-[1px] border-[#2f3641] rounded-lg items-center"
+              className="hidden md:inline-flex whitespace-nowrap text-sm py-2 px-5 dark:bg-[#18191b]  border-[1px] border-[#2f3641] rounded-lg items-center"
               style={{ cursor: "pointer" }}
               onClick={() => location.assign("/allcollections")}
             >
