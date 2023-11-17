@@ -1,7 +1,7 @@
 // IMPORTING NECESSARY FILES
 // IMPORTING COMPONENTS
 import { Icon } from "@iconify/react";
-import tableData from "../NFTDetails";
+import tableData from "../../database/tableData";
 
 // IMPORTING CSS FILE
 // EXPORTING A FUNCTION THAT RETURNS A TABLE
