@@ -32,7 +32,7 @@ export const TableContainer = () => {
               <div className="">{nft.Collections}</div>
               <div className=" md:hidden lg:hidden xl:hidden sm:hidden 2xl:hidden flex flex-row flex-nowrap gray-color">
                 FLOOR: <div className="ml-2 font-bold ">{nft.Floors[0]}</div>
-                <div className="gain flex flex-row flex-nowrap justify-self-center items-center ">
+                <div className="text-[#31c48d] flex flex-row flex-nowrap justify-self-center items-center ">
                   <Icon
                     className="small-hidden"
                     icon="ph:arrow-up-left-light"
@@ -50,7 +50,7 @@ export const TableContainer = () => {
         <td>
           <div className="flex flex-col flex-nowrap items-center px-4 py-2">
             <div className="font-bold">{nft.Volume[0]}</div>
-            <div className="loss flex flex-row flex-nowrap justify-self-center mx-auto text-xs">
+            <div className="text-[#f05252] flex flex-row flex-nowrap justify-self-center mx-auto text-xs">
               <Icon
                 icon="ph:arrow-up-left-light"
                 color="#f05252"
@@ -65,7 +65,7 @@ export const TableContainer = () => {
         <td className="small-hidden">
           <div className="flex flex-col flex-nowrap px-4 py-2">
             <div className="font-bold ">{nft.Floors[0]}</div>
-            <div className="gain flex flex-row flex-nowrap justify-self-center mx-auto text-xs">
+            <div className="text-[#31c48d] flex flex-row flex-nowrap justify-self-center mx-auto text-xs">
               <Icon
                 icon="ph:arrow-up-left-light"
                 color="#31c48d"
@@ -80,7 +80,7 @@ export const TableContainer = () => {
         <td className="small-hidden">
           <div className="flex flex-col flex-nowrap px-4 py-2">
             <div className="font-bold ">{nft.Owners[0]}</div>
-            <div className="loss flex flex-row flex-nowrap justify-self-center mx-auto text-xs">
+            <div className="text-[#f05252] flex flex-row flex-nowrap justify-self-center mx-auto text-xs">
               <Icon
                 icon="ph:arrow-up-left-light"
                 color="#f05252"
@@ -117,7 +117,7 @@ export const TableContainer = () => {
               <div className=" ">{nft.Collections}</div>
               <div className=" md:hidden lg:hidden xl:hidden sm:hidden 2xl:hidden flex flex-row flex-nowrap gray-color">
                 FLOOR: <div className="ml-2 font-bold ">{nft.Floors[0]}</div>
-                <div className="gain flex flex-row flex-nowrap justify-self-center items-center ">
+                <div className="text-[#31c48d] flex flex-row flex-nowrap justify-self-center items-center ">
                   <Icon
                     className="small-hidden"
                     icon="ph:arrow-up-left-light"
@@ -135,7 +135,7 @@ export const TableContainer = () => {
         <td>
           <div className="flex flex-col flex-nowrap items-center px-4 py-2">
             <div className="font-bold ">{nft.Volume[0]}</div>
-            <div className="loss flex flex-row flex-nowrap justify-self-center mx-auto text-xs">
+            <div className="text-[#f05252] flex flex-row flex-nowrap justify-self-center mx-auto text-xs">
               <Icon
                 icon="ph:arrow-up-left-light"
                 color="#f05252"
@@ -150,7 +150,7 @@ export const TableContainer = () => {
         <td className="small-hidden">
           <div className="flex flex-col flex-nowrap px-4 py-2">
             <div className="font-bold ">{nft.Floors[0]}</div>
-            <div className="gain flex flex-row flex-nowrap justify-self-center mx-auto text-xs">
+            <div className="text-[#31c48d] flex flex-row flex-nowrap justify-self-center mx-auto text-xs">
               <Icon
                 icon="ph:arrow-up-left-light"
                 color="#31c48d"
@@ -165,7 +165,7 @@ export const TableContainer = () => {
         <td className="small-hidden">
           <div className="flex flex-col flex-nowrap px-4 py-2">
             <div className="font-bold ">{nft.Owners[0]}</div>
-            <div className="loss flex flex-row flex-nowrap justify-self-center mx-auto text-xs">
+            <div className="text-[#f05252] flex flex-row flex-nowrap justify-self-center mx-auto text-xs">
               <Icon
                 icon="ph:arrow-up-left-light"
                 color="#f05252"
@@ -232,7 +232,7 @@ export default function Table() {
             </span>{" "}
             <span className="flex flex-row flex-nowrap">
               <span className="mx-2 text-white font-semibold">450.6k ₳</span>{" "}
-              <span className="loss flex flex-row items-center flex-nowrap">
+              <span className="text-[#f05252] flex flex-row items-center flex-nowrap">
                 <Icon
                   icon="tdesign:arrow-left-down"
                   color="#f05252"
@@ -270,7 +270,7 @@ export default function Table() {
             </span>
           </div>
           <div className="w-4/5 flex-initial md:hidden ">
-            <h3 className="text-white text-2xl font-medium ">
+            <h3 className=" text-2xl font-medium ">
               Top Collections
             </h3>
           </div>
