@@ -253,12 +253,12 @@ export default function Navbar(props) {
           </div>
 
           <button
-            className="text-[#000000] flex text-[14px] bg-[#FFDB24] py-[8px] px-[4px] border-none rounded-[8px] m-[0px] ml-[5px] transition-all duration-500 ease-in-out cursor-pointer active:scale-[0.8] active:opacity-[0.7]"
+            className="text-[#000000] flex text-[14px] bg-[#FFDB24] py-[8px] px-[0px] border-none rounded-[8px] m-[0px] ml-[5px] transition-all duration-500 ease-in-out cursor-pointer active:scale-[0.8] active:opacity-[0.7]"
             onClick={toggleAdditionalButtons}
           >
             <span>Connect wallet </span>
             <span>
-              <KeyboardArrowDownIcon className="m-0 p-0 -ml-1" />
+              <KeyboardArrowDownIcon className="m-0 -p-1 -ml-1" />
             </span>
           </button>
         </div>
