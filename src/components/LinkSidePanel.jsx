@@ -6,34 +6,40 @@ import { Drawer } from '@mui/material'
 
 // CREATING A LINKSIDEPANEL FUNCTION THAT RETURNS THE SIDE PANEL
 export default function LinkSidePanel(props){
+    // AN OBJECT CONTAINING CSS FOR COMPONENT
+    const styles = {
+        drawer: {
+            backgroundColor: "rgb(0,0,0)",
+            zIndex: "10",
+            display: "flex",
+            flexDirection: "column",
+            gap: "10px",
+            alignItems: "flex-start",
+            border: "1px solid black",
+            borderBottomLeftRadius: "10px",
+            borderTopLeftRadius: "10px",
+            transition: "all 500ms ease-in-out normal",
+            padding: "30px",
+            fontFamily: "Lexend",
+            width: "380px",
+            height: "100%"
+        },
+
+        backDrop: {
+            cursor: "pointer",
+            backgroundColor: "rgb(0, 0, 0, 0.6)"
+        }
+    }
+
     return(
         <Drawer
             anchor='right'
             open={true}
             variant='temporary'
             onClose={props.hideLinkSidePanel}
-            
-            PaperProps={{ style: {
-                backgroundColor: "rgb(0,0,0)",
-                zIndex: "10",
-                display: "flex",
-                flexDirection: "column",
-                gap: "10px",
-                alignItems: "flex-start",
-                border: "1px solid black",
-                borderBottomLeftRadius: "10px",
-                borderTopLeftRadius: "10px",
-                transition: "all 500ms ease-in-out normal",
-                padding: "30px",
-                fontFamily: "Lexend",
-                width: "380px",
-                height: "100%"
-            }}}
-
-            ModalProps={{ slotProps: { backdrop: { style: {
-                cursor: "pointer",
-                backgroundColor: "rgb(0, 0, 0, 0.6)"
-            }}}}}
+            elevation={24}
+            PaperProps={{ style: styles.drawer }}
+            ModalProps={{ slotProps: { backdrop: { style: styles.backDrop }}}}
         >
             <nav className='flex justify-between w-[100%] p-[10px] mb-[15px] border-b-[2px] border-b-link-side-panel-container__side-panel--navbar pb-[20px] rounded-b-[2px]'>
                  <div className='flex justify-center items-center gap-[10px] text-center'>
