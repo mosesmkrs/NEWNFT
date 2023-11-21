@@ -15,9 +15,10 @@ import "swiper/css/scrollbar";
 export default function Carousel() {
   // AN ARRAY OF CARD COMPONENTS
   const carouselCards = Details.map((image, index) => (
-    <SwiperSlide >
-    <div
+    <SwiperSlide 
       key={index}
+    >
+    <div
       className="w-full p-[20px] h-[50vh] flex flex-col-reverse justify-around items-center gap-[40px] my-[50px] mx-0 sm:my-[100px] sm:mx-0 lg:flex-row lg:justify-around lg:items-center lg:w-[90%] lg:my-[50px] lg:mx-auto"
     >
       <div className="flex flex-col justify-center items-start gap-[10px]">
