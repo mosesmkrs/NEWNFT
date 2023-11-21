@@ -5,6 +5,8 @@
 import { NavLink } from "react-router-dom";
 import { useState, useContext } from "react";
 import NightlightIcon from '@mui/icons-material/Nightlight';
+import MenuIcon from "@mui/icons-material/Menu";
+import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 // import { useWallet } from '@meshsdk/react';
 
 //  IMPORING NECESSARY COMPONENTS
@@ -12,6 +14,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import { TextField } from "@mui/material";
 import { ThemeContext } from "../contexts/ThemeProvider";
 
 // EXPORTING A FUNCTION THAT CREATES A NAVBAR COMPONENT
@@ -26,6 +29,32 @@ export default function Navbar(props) {
   const toggleAdditionalButtons = () => {
     setShowAdditionalButtons(!showAdditionalButtons);
   };
+
+  // AN OBJECT CONTAINING CSS PROPERITES
+  const styles = { input: {
+    mediumScreens: {
+      paddingTop: "12px",
+      paddingBottom: "12px",
+      paddingLeft: "44px",
+      paddingRight: "44px",
+      marginLeft: "-35px",
+      width: "260px",
+      height: "50px",
+      borderRadius: "20px",
+      border: "1px solid #8B919B",
+      backgroundColor: "rgba(255, 255, 255, 0.00)",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      color: "#8B919B",
+      fontFamily: "Inter",
+      fontSize: "14px",
+      fontWeight: "400",
+      lineHeight: "1.5",
+    },
+
+    largeScreens: { width: "356px" }
+  }}
 
  return (
   <div>
@@ -55,15 +84,8 @@ export default function Navbar(props) {
           className='w-[45px] h-[45px] rounded-full bg-small-screen-buttons__wallet-button border-[2px] border-solid border-small-screen-buttons__wallet-button p-[4px] cursor-pointer transition-all duration-500 ease-in-out flex justify-center items-center'
           onClick={toggleAdditionalButtons}
           title='show-wallet'
-
         >
-          <img
-            crossOrigin="anonymous"
-            id=""
-            src="https://static.jpgstoreapis.com/icons/wallet-outline-dark.svg"
-            alt="wallet icon"
-            loading="lazy"
-          />
+          <AccountBalanceWalletIcon/>
         </button>
 
         <button
@@ -71,21 +93,21 @@ export default function Navbar(props) {
           title="show-sidebar"
           onClick={props.showLinkSidePanel}
         >
-          <div className="w-[20px] bg-[whitesmoke] rounded-[10px] h-[3px] my-[2px] mx-0 cursor-pointer transition-all duration-500 ease-in-out"></div>
-          <div className="w-[20px] bg-[whitesmoke] rounded-[10px] h-[3px] my-[2px] mx-0 cursor-pointer transition-all duration-500 ease-in-out"></div>
-          <div className="w-[20px] bg-[whitesmoke] rounded-[10px] h-[3px] my-[2px] mx-0 cursor-pointer transition-all duration-500 ease-in-out"></div>
+          <MenuIcon/>
         </button>
       </div>
 
-      <div className="medium-screen-buttons hidden sm:flex sm:justify-between sm:items-center sm:gap-[10px] sm:w-[100%] lg:hidden">
+      <div className="medium-screen-buttons hidden sm:flex sm:justify-between sm:items-center sm:gap-[10px] sm:w-[100%] md:hidden">
         <div className="hidden justify-center items-center sm:flex sm:my-0 sm:mx-auto">
           <SearchIcon className="text-[#706f6f] cursor-pointer" />
 
-          <input
-            className="py-[12px] px-[44px] ml-[-35px] w-[260px] h-[50px] rounded-[20px] border-solid border-[1px] border-[#8B919B] bg-search-bar flex justify-center items-center text-[#8B919B] font-[Inter] text-[14px] font-[400] leading-normal md:w-[356px] lg:py-[12px] lg:px-[44px] lg:ml-[-35px] lg:h-[50px] lg:rounded-[20px] lg:border-[1px] lg:border-solid lg:border-[#8B919B] lg:bg-search-bar lg:flex lg:justify-center lg:items-center"
+          <TextField
             type="text"
             placeholder="Search collection, or NFT"
             name="searchInput"
+            autoComplete="on"
+            InputProps={{ style: {...styles.input.mediumScreens }}}
+            
           />
         </div>
 
@@ -95,13 +117,7 @@ export default function Navbar(props) {
             onClick={toggleAdditionalButtons}
             title="show-wallet"
           >
-            <img
-              crossOrigin="anonymous"
-              id=""
-              src="https://static.jpgstoreapis.com/icons/wallet-outline-dark.svg"
-              alt="wallet icon"
-              loading="lazy"
-            />
+            <AccountBalanceWalletIcon/>
           </button>
 
           <button
@@ -109,9 +125,40 @@ export default function Navbar(props) {
             title="show-sidebar"
             onClick={props.showLinkSidePanel}
           >
-            <div className="w-[20px] bg-[whitesmoke] rounded-[10px] h-[3px] my-[2px] mx-0 cursor-pointer transition-all duration-500 ease-in-out"></div>
-            <div className="w-[20px] bg-[whitesmoke] rounded-[10px] h-[3px] my-[2px] mx-0 cursor-pointer transition-all duration-500 ease-in-out"></div>
-            <div className="w-[20px] bg-[whitesmoke] rounded-[10px] h-[3px] my-[2px] mx-0 cursor-pointer transition-all duration-500 ease-in-out"></div>
+            <MenuIcon/>
+          </button>
+        </div>
+      </div>
+
+      <div className="large-screen-buttons hidden md:flex md:justify-between md:items-center md:gap-[10px] md:w-[100%] lg:hidden">
+        <div className="hidden justify-center items-center sm:flex sm:my-0 sm:mx-auto">
+          <SearchIcon className="text-[#706f6f] cursor-pointer" />
+
+          <TextField
+            type="text"
+            placeholder="Search collection, or NFT"
+            name="searchInput"
+            autoComplete="on"
+            InputProps={{ style: {...styles.input.mediumScreens, ...styles.input.largeScreens }}}
+            
+          />
+        </div>
+
+        <div className="medium-screen-buttons__button-container sm:flex sm:justify-center sm:items-center sm:gap-[15px]">
+          <button
+            className="w-[45px] h-[45px] rounded-full bg-small-screen-buttons__wallet-button border-[2px] border-solid border-small-screen-buttons__wallet-button p-[4px] cursor-pointer transition-all duration-500 ease-in-out flex justify-center items-center"
+            onClick={toggleAdditionalButtons}
+            title="show-wallet"
+          >
+            <AccountBalanceWalletIcon/>
+          </button>
+
+          <button
+            className="small-screen-buttons__side-panel-button w-[45px] h-[45px] rounded-full bg-small-screen-buttons__search-button border-[2px] border-solid border-small-screen-buttons__search-button p-[4px] flex justify-center items-center flex-col"
+            title="show-sidebar"
+            onClick={props.showLinkSidePanel}
+          >
+            <MenuIcon/>
           </button>
         </div>
       </div>
@@ -120,11 +167,12 @@ export default function Navbar(props) {
         <div className="lg:flex lg:items-center lg:justify-center">
           <SearchIcon className="text-[#706f6f] cursor-pointer" />
 
-          <input
-            className="search-bar py-[12px] px-[44px] ml-[-35px] w-[260px] h-[50px] rounded-[20px] border-solid border-[1px] border-[#8B919B] bg-search-bar flex justify-center items-center text-[#8B919B] font-[Inter] text-[14px] font-[400] leading-normal md:w-[356px] lg:py-[12px] lg:px-[44px] lg:ml-[-35px] lg:h-[50px] lg:rounded-[20px] lg:border-[1px] lg:border-solid lg:border-[#8B919B] lg:bg-search-bar lg:flex lg:justify-center lg:items-center"
+          <TextField
             type="text"
             placeholder="Search collection, or NFT"
             name="searchInput"
+            autoComplete="on"
+            InputProps={{ style: {...styles.input.mediumScreens, ...styles.input.largeScreens}}}
           />
         </div>
 

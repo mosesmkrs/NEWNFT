@@ -1,28 +1,57 @@
 /* eslint-disable react/prop-types */
 // IMPORT NECESSARY FILES 
 import SearchIcon from '@mui/icons-material/Search';
+import InputBase from '@mui/material/InputBase';
+import Divider from '@mui/material/Divider';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
+import { Backdrop } from '@mui/material';
 
 // EXPORTING A SEARCHBAR FUNCTION THAT RETURNS A SEARCHBAR COMPONENT
 export default function SearchBar(props){
+    // AN OBJECT HOLDING ALL CSS PROPERTIES
+    const styles = {
+        backDrop: {
+            position: "absolute",
+            width: "100%",
+            height: "100%",
+            marginTop: "100px",
+            backgroundColor: "rgba(255, 255, 255, 0.2)",
+            transition: "all 500ms ease-in-out normal",
+            zIndex: "1",
+            fontFamily: "Inter"
+        }
+    }
+
     return(
-        <div className='absolute w-full h-full bg-search-container transition-all duration-500 ease-in-out z-[1] font-[Inter]'>
-            <div className='w-[90%] flex items-center justify-around m-auto mt-[100px] transition-all duration-500 ease-in-out bg-link-side-panel-container__side-panel--rewards-button h-[50px] shadow-search-container__search-bar rounded-[20px] gap-[10px]'>
-                <SearchIcon className='cursor-default ml-[10px] transition-all duration-500 ease-in-out hover:scale-[1.4]'/>
-                
-                <input 
+        <Backdrop
+            open = {true}
+            slotProps={{ root: { style: styles.backDrop } }}
+        >
+            <div className='w-full flex items-center justify-around m-auto mt-0 transition-all duration-500 ease-in-out bg-link-side-panel-container__side-panel--rewards-button shadow-search-container__search-bar gap-[10px] p-[20px] h-[70px]'>
+                <IconButton sx={{ p: '10px' }} aria-label="menu">
+                    <SearchIcon />
+                </IconButton>
+
+                <InputBase
+                    sx={{ ml: 1, flex: 1 }}
+                    placeholder="Search Collection or NFT"
                     type="text" 
                     name="search-data"
-                    placeholder='Search collection, or NFT'
                     value={props.formData.searchData}
                     onChange={props.updateFormData}
-                    className='p-[5px] w-[70%] rounded-[5px] m-[10px] border-none text-left bg-[gray] text-black'
                 />
-                
-                <div 
-                    className='search-container__search-bar--close-button cursor-pointer bg-[red] w-[30px] h-[30px] border-[2px] border-solid border-black rounded-[10px] flex justify-center items-center font-[1rem] font-[Inter] mr-[10px] transition-all duration-500 ease-in-out hover:scale-[1.4] active:bg-[greenyellow]'
+
+                <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+
+                <IconButton 
+                    color='warning' 
+                    sx={{ p: '10px' }} 
                     onClick={props.hideSearchBar}
-                >X</div>
+                >
+                    <CloseIcon/>
+                </IconButton>
             </div>
-        </div>
+        </Backdrop>
     )
 }
