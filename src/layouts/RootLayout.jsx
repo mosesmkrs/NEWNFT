@@ -10,7 +10,7 @@ import SearchBar from "../components/SearchBar"
 
 import NightlightIcon from '@mui/icons-material/Nightlight';
 import LightModeIcon from "@mui/icons-material/LightMode";
-
+import ConnectWallet  from './cardano';
 // IMPORTING NECESSARY CONTEXTS
 import { ThemeContext } from "../contexts/ThemeProvider";
 
@@ -38,6 +38,14 @@ export default function RootLayout(){
             [name]: value
         }))
     }
+
+
+    const [isCardanoModalOpen, setIsCardanoModalOpen] = useState(false); // State to manage the Cardano modal
+
+    // Function to open or close the Cardano modal
+    const toggleCardanoModal = () => {
+      setIsCardanoModalOpen(!isCardanoModalOpen);
+    };
  
     return(
         <main className="min-h-[100vh] scroll-smooth relative w-[100%] overflow-x-hidden">
@@ -67,13 +75,13 @@ export default function RootLayout(){
             <Navbar
                 showLinkSidePanel = {() => setShowLinkSidePanel(true)}
                 showSearchBar = {() => setShowSearchBar(true)}
-                // toggleLanguage={toggleLanguage}
-                // currentLanguage={currentLanguage}
+                toggleCardanoModal={toggleCardanoModal}
+               
              />
 
-            {/* <IntlProvider locale={currentLanguage} messages={locales[currentLanguage]}> */}
+         {isCardanoModalOpen && <ConnectWallet closeModal={toggleCardanoModal} />}
             <Outlet/>
-            {/* </IntlProvider> */}
+          
             <Footer/>
          </main>
      )
