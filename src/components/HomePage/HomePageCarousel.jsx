@@ -123,7 +123,7 @@ export default function Carousel() {
 
   return (
     <div className="flex justify-center w-full">
-      <div className="keen-slider" ref={sliderRef}>
+      <div className="keen-slider md:min-h-[80vh] md:mb-[20%] lg:mb-0 lg:h-[100%]" ref={sliderRef}>
         {carouselCards}
       </div>
     </div>

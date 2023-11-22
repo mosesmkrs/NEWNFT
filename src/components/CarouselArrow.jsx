@@ -1,14 +1,14 @@
 /* eslint-disable react/prop-types */
 // A FUNCTION THAT RETURNS THE ARROW COMPONENTS
 export default function CarouselArrow(props) {
-    const disabled = props.disabled ? " arrow--disabled" : ""
+    const disabled = props.disabled ? " fill-search-container" : ""
     
     return (
       <svg
         onClick={props.onClick}
 
-        className={`arrow ${
-          props.left ? "arrow--left" : "arrow--right"
+        className={`w-[30px] h-[30px] absolute top-[50%] translate-y-[-50%] fill-blue-500 cursor-pointer arrow ${
+          props.left ? "left-[5px]" : "left-auto right-[5px]"
         } ${disabled}`}
 
         xmlns="http://www.w3.org/2000/svg"

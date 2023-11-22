@@ -41,6 +41,7 @@ export default {
         'container__selling_stats': "#9ca3af",
         'overview-container__footer--p': "#9ca3af",
         'list--entry--description': "#9ca3af",
+        'search-container': 'rgba(255, 255, 255, 0.2)',
         // SPECIAL CLASSES
         'link-side-panel-container__side-panel--rewards-button++active': 'rgb(20, 20, 20)',
         'text-green':'#31c48d',
