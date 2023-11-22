@@ -80,7 +80,7 @@ export default function Navbar(props) {
         </div>
       </NavLink>
 
-      {/* <div className="small-screen-buttons flex justify-center items-center gap-[15px] sm:hidden">
+      <div className="small-screen-buttons flex justify-center items-center gap-[15px] sm:hidden">
         <button
           className="w-[45px] h-[45px] rounded-full bg-small-screen-buttons__search-button border-[2px] border-solid border-small-screen-buttons__search-button p-[4px] cursor-pointer transition-all duration-500 ease-in-out " 
           title="search-button"
@@ -203,7 +203,7 @@ export default function Navbar(props) {
                 <a className="">Explore</a>
 
                 <div className="dropdown-content hidden absolute text-[#555c69] bg-[ ] min-w-[160px] z-[1] rounded-[5px] ml-[-10px] shadow-dropdown-content">
-                  {/* Dropdown links */}
+                 
                   <NavLink
                     className=" block py-[12px] px-[16px] hover:bg-[#2a2929]"
                     to="/explore/allcollections"
