@@ -2,56 +2,57 @@
 // IMPORTING NECESSARY FILES
     // IMPORTING NECESSARY MODULES
 import { Link } from 'react-router-dom'
-import { Drawer } from 'antd'
+import { Drawer } from '@mui/material'
 
 // CREATING A LINKSIDEPANEL FUNCTION THAT RETURNS THE SIDE PANEL
 export default function LinkSidePanel(props){
-    // AN OBJECT TO HOLD CSS PROPERTIES
-    const drawerStyle = {
-        backgroundColor: "rgb(0,0,0, 0.95)",
-        zIndex: "10",
-        display: "flex",
-        flexDirection: "column",
-        gap: "10px",
-        alignItems: "flex-start",
-        border: "1px solid black",
-        borderBottomLeftRadius: "10px",
-        borderTopLeftRadius: "10px",
-        transition: "all 500ms ease-in-out normal",
-        padding: "10px",
-        fontFamily: "Lexend",
-        paddingLeft: "0"
+    // AN OBJECT CONTAINING CSS FOR COMPONENT
+    const styles = {
+        drawer: {
+            backgroundColor: "rgb(0,0,0)",
+            zIndex: "10",
+            display: "flex",
+            flexDirection: "column",
+            gap: "10px",
+            alignItems: "flex-start",
+            border: "1px solid black",
+            borderBottomLeftRadius: "10px",
+            borderTopLeftRadius: "10px",
+            transition: "all 500ms ease-in-out normal",
+            padding: "30px",
+            fontFamily: "Lexend",
+            width: "380px",
+            height: "100%"
+        },
+
+        backDrop: {
+            cursor: "pointer",
+            backgroundColor: "rgb(0, 0, 0, 0.6)"
+        }
     }
 
     return(
         <Drawer
-            placement='right'
-            width={"380px"}
-            height={"100%"}
-            onClose={props.hideLinkSidePanel}
+            anchor='right'
             open={true}
-            closeIcon={false}
-
-            styles={{
-                mask: {
-                    cursor: "pointer"
-                }
-            }}
-
-            style={drawerStyle}
+            variant='temporary'
+            onClose={props.hideLinkSidePanel}
+            elevation={24}
+            PaperProps={{ style: styles.drawer }}
+            ModalProps={{ slotProps: { backdrop: { style: styles.backDrop }}}}
         >
             <nav className='flex justify-between w-[100%] p-[10px] mb-[15px] border-b-[2px] border-b-link-side-panel-container__side-panel--navbar pb-[20px] rounded-b-[2px]'>
-                <div className='flex justify-center items-center gap-[10px] text-center'>
-                    <p className='text-side-panel--navbar--side-buttons--p text-[16px] font-bold transition-all duration-500 ease-in-out'>EN</p>
+                 <div className='flex justify-center items-center gap-[10px] text-center'>
+                     <p className='text-side-panel--navbar--side-buttons--p text-[16px] font-bold transition-all duration-500 ease-in-out'>EN</p>
                 
-                    <div className='text-side-panel--navbar--side-buttons--p text-[20px] font-[600] mb-[5px] cursor-pointer'>v</div>
+                     <div className='text-side-panel--navbar--side-buttons--p text-[20px] font-[600] mb-[5px] cursor-pointer'>v</div>
                 
-                    <button onClick={props.toggleTheme}>
-                        {props.themeIcon}
-                    </button>
-                </div>
+                     <button onClick={props.toggleTheme}>
+                         {props.themeIcon}
+                     </button>
+                 </div>
 
-                <img 
+                 <img 
                     crossOrigin="anonymous" 
                     src="https:static.jpgstoreapis.com/icons/close-dark.svg" 
                     alt="close"
