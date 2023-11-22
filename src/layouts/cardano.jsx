@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react'
 import { useWallet, useWalletList } from '@meshsdk/react'
 import Button from './Button'
 import Dropdown from './Dropdown'
-import Image from 'next/image'
+
 import Modal from './Modal'
 
 const ConnectWallet = ({ closeModal }) => {
@@ -66,7 +66,7 @@ const ConnectWallet = ({ closeModal }) => {
 				<Button variant='accent'>
 					{selectedWallet ? (
 						<div className='flex text-[#9CA3AF] text-[16px] border p-3 rounded-md mb-2 '>
-              <Image
+              <img
 								src={selectedWallet.icon}
 								alt={selectedWallet.name}
 								width='30'
@@ -94,7 +94,7 @@ const ConnectWallet = ({ closeModal }) => {
 								key={wallet.name}
 								onClick={() => handleWalletSelection(wallet)}
 							>
-                <Image
+                <img
 									src={wallet.icon}
 									alt={wallet.name}
 									width='30'
