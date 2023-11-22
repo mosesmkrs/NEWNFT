@@ -15,6 +15,7 @@ export default function Carousel() {
   // GETTING THE USEREF FROM USEKEENSLIDER
   const [sliderRef] = useKeenSlider({ 
     loop: true,
+    
     detailsChanged(s) {
       setDetails(s.track.details)
     }
