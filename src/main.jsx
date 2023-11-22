@@ -5,7 +5,6 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import { ClerkProvider } from "@clerk/clerk-react";
 // IMPORTING NECESSARY CONTEXTS
-import UserContextProvider from "./contexts/UserContext.jsx";
 import ThemeContextProvider from "./contexts/ThemeProvider.jsx";
 
 // IMPORTING A CSS FILE
@@ -25,9 +24,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       supportEmail="ronniedenzel0@gmail.com"
     >
       <ThemeContextProvider>
-        <UserContextProvider>
-            <App />
-        </UserContextProvider>
+        <App />
       </ThemeContextProvider>
     </ClerkProvider>
   </React.StrictMode>

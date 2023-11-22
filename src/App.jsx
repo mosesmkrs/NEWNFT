@@ -1,6 +1,5 @@
 // IMPORTING REACT ROUTER
 import {createBrowserRouter, createRoutesFromElements, Route, RouterProvider} from 'react-router-dom'
-import {RedirectToSignIn, SignedIn, SignedOut} from "@clerk/clerk-react"
 //import React from 'react'
 import { useContext, useMemo } from "react";
 import { createTheme, ThemeProvider, CssBaseline} from "@mui/material";
@@ -24,7 +23,6 @@ import TnC from './pages/T&C';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 
 import RootLayout from './layouts/RootLayout'
-import ApplyForLaunchpadLayout from './layouts/ApplyForLaunchpadLayout';
 import {ThemeContext} from "./contexts/ThemeProvider";
 
 // CREATING A APPROUTER FUNCTION
@@ -65,24 +63,9 @@ const appRouter = createBrowserRouter(
         <Route path='launches' element={<LaunchesPage/>}></Route>
         <Route path='launch details' element={<LaunchpadPage/>}></Route>
         
-        <Route path='apply for launchpad' element={<ApplyForLaunchpadLayout/>}>
+        <Route path='apply for launchpad'>
           <Route path='auth' element={<AuthenticationPage/>}></Route>
-          
-          <Route 
-            path='apply' 
-            
-            element={
-              <div>
-                <SignedIn>
-                  <ApplyForLaunchpadPage/>
-                </SignedIn>
-
-                <SignedOut>
-                  <RedirectToSignIn redirectUrl={"/launchpad/apply for launchpad/apply"}/>
-                </SignedOut>
-              </div>
-            }
-          ></Route>
+          <Route path='apply' element={<ApplyForLaunchpadPage/>}></Route>
         </Route>
 
       </Route>
