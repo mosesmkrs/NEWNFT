@@ -9,9 +9,9 @@ export default function SignInAuthenticationPage(){
         <div className="min-h-[100vh] scroll-smooth box-border transition-all duration-500 ease-in-out flex justify-center items-center">
             <SignUp
                 routing="path"
-                path="/launchpad/apply%20for%20launchpad/auth/sign-up"
-                redirectUrl="/launchpad/apply%20for%20launchpad/apply"
-                signInUrl="/launchpad/apply%20for%20launchpad/auth/sign-in"
+                path="/auth/sign-up"
+                redirectUrl="/launchpad/apply%20for%20launchpad"
+                signInUrl="/auth/sign-in"
             />
         </div>
     )
