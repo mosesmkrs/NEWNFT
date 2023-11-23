@@ -6,7 +6,7 @@ import { useContext, useMemo } from "react";
 import { createTheme, ThemeProvider, CssBaseline} from "@mui/material";
 
 import { createWeb3Modal, defaultWagmiConfig } from "@web3modal/wagmi/react";
-import { MeshProvider } from "@meshsdk/react";
+
 import { WagmiConfig } from "wagmi";
 import { arbitrum, mainnet } from "wagmi/chains";
 // IMPORTING THE NECESSARY PAGES AND LAYOUTS
@@ -152,11 +152,11 @@ export default function App() {
       <CssBaseline />
       
       <div>
-      <MeshProvider>
+      
           <WagmiConfig config={wagmiConfig}>
             <RouterProvider router={appRouter} />
           </WagmiConfig>
-        </MeshProvider>
+       
       </div>
     </ThemeProvider>
   );
