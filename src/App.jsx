@@ -3,6 +3,7 @@ import {createBrowserRouter, createRoutesFromElements, Route, RouterProvider} fr
 //import React from 'react'
 import { useContext, useMemo } from "react";
 import { createTheme, ThemeProvider, CssBaseline} from "@mui/material";
+import { AuthenticateWithRedirectCallback } from '@clerk/clerk-react';
 // IMPORTING THE NECESSARY PAGES AND LAYOUTS
 import AllCollectionsPage from './pages/AllCollectionsPage';
 import AllNftsPage from './pages/AllNftsPage';
@@ -11,7 +12,8 @@ import HomePage from './pages/Home/HomePage';
 import LaunchpadPage from './pages/launchpadPage';
 import LaunchesPage from './pages/LaunchesPage';
 import ApplyForLaunchpadPage from "./pages/ApplyForLaunchpadPage"
-import AuthenticationPage from './pages/AuthenticationPage';
+import SignInAuthenticationPage from './pages/SignInAuthenticationPage';
+import SignUpAuthenticationPage from './pages/SignUpAuthenticationPage';
 
 import TeamPage from './pages/TeamPage';
 import VerificationPage from './pages/VerificationPage';
@@ -64,7 +66,16 @@ const appRouter = createBrowserRouter(
         <Route path='launch details' element={<LaunchpadPage/>}></Route>
         
         <Route path='apply for launchpad'>
-          <Route path='auth' element={<AuthenticationPage/>}></Route>
+          <Route path='auth'>
+            <Route path="sign-in" element={<SignInAuthenticationPage/>}>
+              <Route path="sso-callback" element={<AuthenticateWithRedirectCallback />}/>
+            </Route>
+
+            <Route path="sign-up" element={<SignUpAuthenticationPage/>}>
+              <Route path="sso-callback" element={<AuthenticateWithRedirectCallback />}/>
+            </Route>
+          </Route>
+
           <Route path='apply' element={<ApplyForLaunchpadPage/>}></Route>
         </Route>
 

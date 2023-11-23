@@ -1,29 +1,18 @@
 // IMPORTING NECESSARY FILES
-    // IMPORTING NECESSARY HOOKS
-    // IMPORTING NECESSARY CONFIGS
     // IMPORTING NECESSARY MODULES
+import { UserButton, UserProfile } from "@clerk/clerk-react"
 
 // EXPORTING DEFAULT APPLYFORLAUNCHPADPAGE
 export default function ApplyForLaunchpadPage(){
-    // A STATE TO KEEP TRACK OF RIGHT STATE OF AUTH
-    // A STATE TO KEEP TRACK OF RIGHT STATE OF SIGN IN BUTTON
-
-    // A STATE TO KEEP TRACK OF FORM DATA
-
-    // OBTAINING USERCONTEXT FROM HOOK
-
-    // A FUNCTION TO UPDATE FORM DATA
-
-    // A FUNCTION TO SIGN IN USER VIA GITHUB
-
-    // A FUNCTIOM TO SIGN IN VIA EMAIL
-
-    // A FUNCTION TO SIGN UP NEW USERS
-
     return(
         // A CONTAINER FOR THE WHOLE PAGE
         <div className="min-h-[100vh] scroll-smooth box-border transition-all duration-500 ease-in-out flex justify-center items-center">
-            {/* A SIGNINMODAL COMPONANT THAT HANDLES AUTHENTICATION */}
+            <UserButton
+                showName={true}
+                signInUrl="/launchpad/apply%20for%20launchpad/auth/sign-in"
+                afterSignOutUrl="/"
+                defaultOpen={false}
+            />
         </div>
     )
 }
