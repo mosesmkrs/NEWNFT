@@ -19,6 +19,7 @@ const clerkPublishableKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+    {/* DIDNT PROVIDE REDIRECTS AS THEY CAN DIFFER */}
     <ClerkProvider 
       publishableKey={clerkPublishableKey}
       supportEmail="ronniedenzel0@gmail.com"

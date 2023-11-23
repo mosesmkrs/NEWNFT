@@ -34,10 +34,12 @@ const appRouter = createBrowserRouter(
       {/* AUTH */}
       <Route path='auth'>
         <Route path="sign-in" element={<SignInAuthenticationPage/>}>
+          {/* NO PROPS FOR THIS CLERK ELEMENT AS BEHAVIOUR IS DESCRIBED BY PARENT */}
           <Route path="sso-callback" element={<AuthenticateWithRedirectCallback />}/>
         </Route>
 
         <Route path="sign-up" element={<SignUpAuthenticationPage/>}>
+          {/* NO PROPS FOR THIS CLERK ELEMENT AS BEHAVIOUR IS DESCRIBED BY PARENT */}
           <Route path="sso-callback" element={<AuthenticateWithRedirectCallback />}/>
         </Route>
       </Route>
