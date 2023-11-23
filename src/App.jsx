@@ -31,6 +31,17 @@ import {ThemeContext} from "./contexts/ThemeProvider";
 const appRouter = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
+      {/* AUTH */}
+      <Route path='auth'>
+        <Route path="sign-in" element={<SignInAuthenticationPage/>}>
+          <Route path="sso-callback" element={<AuthenticateWithRedirectCallback />}/>
+        </Route>
+
+        <Route path="sign-up" element={<SignUpAuthenticationPage/>}>
+          <Route path="sso-callback" element={<AuthenticateWithRedirectCallback />}/>
+        </Route>
+      </Route>
+
       {/* HOMEPAGE */}
       <Route path="/" element={<HomePage />}></Route>
       <Route path="home" element={<HomePage />}></Route>
@@ -60,25 +71,10 @@ const appRouter = createBrowserRouter(
       </Route>
 
       {/* LAUNCHPAD */}
-
       <Route path='launchpad'>
         <Route path='launches' element={<LaunchesPage/>}></Route>
         <Route path='launch details' element={<LaunchpadPage/>}></Route>
-        
-        <Route path='apply for launchpad'>
-          <Route path='auth'>
-            <Route path="sign-in" element={<SignInAuthenticationPage/>}>
-              <Route path="sso-callback" element={<AuthenticateWithRedirectCallback />}/>
-            </Route>
-
-            <Route path="sign-up" element={<SignUpAuthenticationPage/>}>
-              <Route path="sso-callback" element={<AuthenticateWithRedirectCallback />}/>
-            </Route>
-          </Route>
-
-          <Route path='apply' element={<ApplyForLaunchpadPage/>}></Route>
-        </Route>
-
+        <Route path='apply for launchpad' element={<ApplyForLaunchpadPage/>}></Route>
       </Route>
     </Route>
   )
