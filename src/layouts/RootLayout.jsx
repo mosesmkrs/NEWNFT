@@ -7,7 +7,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import LinkSidePanel from '../components/LinkSidePanel'
 import SearchBar from "../components/SearchBar"
-
+import ConnectWallet  from './cardano';
 import NightlightIcon from '@mui/icons-material/Nightlight';
 import LightModeIcon from "@mui/icons-material/LightMode";
 
@@ -41,9 +41,11 @@ export default function RootLayout(){
 
 
    
-
+    const [isCardanoModalOpen, setIsCardanoModalOpen] = useState(false); // State to manage the Cardano modal
     // Function to open or close the Cardano modal
-  
+    const toggleCardanoModal = () => {
+        setIsCardanoModalOpen(!isCardanoModalOpen);
+      };
  
     return(
         <main className="min-h-[100vh] scroll-smooth relative w-[100%] overflow-x-hidden">
@@ -73,11 +75,11 @@ export default function RootLayout(){
             <Navbar
                 showLinkSidePanel = {() => setShowLinkSidePanel(true)}
                 showSearchBar = {() => setShowSearchBar(true)}
-               
+                toggleCardanoModal={toggleCardanoModal}
                
              />
 
-         
+{isCardanoModalOpen && <ConnectWallet closeModal={toggleCardanoModal} />}
             <Outlet/>
           
             <Footer/>

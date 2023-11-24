@@ -4,7 +4,7 @@ import {RedirectToSignIn, SignedIn, SignedOut} from "@clerk/clerk-react"
 //import React from 'react'
 import { useContext, useMemo } from "react";
 import { createTheme, ThemeProvider, CssBaseline} from "@mui/material";
-
+import { MeshProvider } from "@meshsdk/react";
 import { createWeb3Modal, defaultWagmiConfig } from "@web3modal/wagmi/react";
 
 import { WagmiConfig } from "wagmi";
@@ -152,11 +152,11 @@ export default function App() {
       <CssBaseline />
       
       <div>
-      
+      <MeshProvider>
           <WagmiConfig config={wagmiConfig}>
             <RouterProvider router={appRouter} />
           </WagmiConfig>
-       
+        </MeshProvider>
       </div>
     </ThemeProvider>
   );
