@@ -12,7 +12,7 @@ export default function Launchpadcontainer(){
   // GETTING THE QUERY PARAMETERS FROM THE USESEARCHPARAMS FUNCTION
   const [searchParams] = useSearchParams()
   // GETTING THE DISTANCE BETWEEN THE DATE OF PRODUCTION AND NOW
-  const dateDistance = formatDistance(new Date(2023, 9, 15, 12, 0, 0), new Date())
+  const dateDistance = formatDistance(new Date(2023, 10, 22, 19, 40, 0), new Date())
 
   // A FUNCTION TO VALIDATE THE QUERY ID VALUE AND ITS RESPECTIVE DATA
   function validateQueryParams(){

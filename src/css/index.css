@@ -28,6 +28,11 @@
     text-decoration: none
 }
 
+.arrow {
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+}
+
 /* Show the dropdown content on hover */
 .dropdown:hover .dropdown-content {
     display: block;

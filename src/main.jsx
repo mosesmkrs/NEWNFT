@@ -3,9 +3,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
-import { ClerkProvider } from "@clerk/clerk-react";
+import { ClerkProvider, MultisessionAppSupport } from "@clerk/clerk-react";
 // IMPORTING NECESSARY CONTEXTS
-import UserContextProvider from "./contexts/UserContext.jsx";
 import ThemeContextProvider from "./contexts/ThemeProvider.jsx";
 
 // IMPORTING A CSS FILE
@@ -20,15 +19,18 @@ const clerkPublishableKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+    {/* DIDNT PROVIDE REDIRECTS AS THEY CAN DIFFER */}
     <ClerkProvider 
       publishableKey={clerkPublishableKey}
       supportEmail="ronniedenzel0@gmail.com"
+      allowedRedirectOrigins={["http://localhost:5173", "https://saved-yeti-32.clerk.accounts.dev"]}
+      signInUrl="/auth/sign-in"
     >
-      <ThemeContextProvider>
-        <UserContextProvider>
-            <App />
-        </UserContextProvider>
-      </ThemeContextProvider>
+      <MultisessionAppSupport>
+        <ThemeContextProvider>
+          <App />
+        </ThemeContextProvider>
+      </MultisessionAppSupport>
     </ClerkProvider>
   </React.StrictMode>
 );
