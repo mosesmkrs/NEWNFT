@@ -50,7 +50,7 @@ const ConnectWallet = ({ closeModal }) => {
          </span>
 
          <div>
-      <img className='w-12  mt-5' src='../../public/img/cardano.png' alt='icon'/>
+      <img className='w-12  mt-5' src='../../img/cardano.png' alt='icon'/>
       </div>
              <div className='font-bold py-3  text-xl'>
        <p> Cardano wallets</p>
