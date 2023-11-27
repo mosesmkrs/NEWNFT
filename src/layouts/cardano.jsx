@@ -99,24 +99,24 @@ const ConnectWallet = ({ closeModal }) => {
       
 		<Dropdown
     
-			// title={
-			// 	<Button variant='accent'>
-			// 		{selectedWallet ? (
-			// 			<div className='flex text-[#9CA3AF] text-[16px] border p-3 rounded-md mb-2 '>
-            //   <img
-			// 					src={selectedWallet.icon}
-			// 					alt={selectedWallet.name}
-			// 					width='30'
-			// 					height='30'
-			// 				/>
-			// 				<span>{selectedWallet.name}</span>
+			title={
+				<Button variant='accent'>
+					{selectedWallet ? (
+						<div className='flex text-[#9CA3AF] text-[16px] border p-3 rounded-md mb-2 '>
+              <img
+								src={selectedWallet.icon}
+								alt={selectedWallet.name}
+								width='30'
+								height='30'
+							/>
+							<span>{selectedWallet.name} connected</span>
 							
-			// 			</div>
-			// 		) : connecting && (
-			// 			'Connecting'
-			// 		)}
-			// 	</Button>
-			// }
+						</div>
+					) : connecting && (
+						'Connecting'
+					)}
+				</Button>
+			}
 		>
        
 			<div className='connect-wallet'>

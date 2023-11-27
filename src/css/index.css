@@ -132,3 +132,11 @@
     }
   }
   
+
+  .background-image{
+    background-image: url('../../img/background.jpeg');
+    background-size: cover; /* Adjust the background size as needed */
+    background-repeat: no-repeat;
+    height: 30vh; /* Set the height to 100% of the viewport height */
+    margin: 0;
+  }
