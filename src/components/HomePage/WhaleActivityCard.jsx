@@ -1,22 +1,17 @@
-import Details from "../../database/NFTDetails";
+/* eslint-disable react/prop-types */
+// IMPORTING NECESSARY FILES
+  // IMPORTING COMPONENTS
 import { Icon } from "@iconify/react";
-import { Navigation, Pagination, A11y } from 'swiper/modules';
-import {Swiper, SwiperSlide} from 'swiper/react'
-import 'swiper/css'
 
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
-
-const Cards = () => {
-  const carouselCards = Details.map((nft, index) => (
-    <SwiperSlide key={index} className="mb-10 px-10"> 
-    <div  className="flex flex-col md:flex md:flex-row   ">
+// A FUNCTION THAT RETURNS A WHALEACTIVITY CARD COMPONENT
+export default function WhaleActivityCard(props){
+  return (
+    <div className="flex flex-col md:flex md:flex-row   ">
       <div >
         <img
         className="rounded-lg"
-          src={nft.cardImage}
-          alt={`Image ${index}`}
+          src={props.cardImage}
+          alt={`Image ${props.index}`}
           width="100"
           height="100"
         />
@@ -27,29 +22,10 @@ const Cards = () => {
           <Icon icon="mdi:cart" color="#0e9f6e" />
           <p className="text-text-green text-xs">Purchase</p>
         </span>
-        <p>{Details[index].cardTitle}</p>
-        <p className="text-md font-bold ">{Details[index].price}</p>
-        <p>{Details[index].released}</p>
+        <p>{props.cardTitle}</p>
+        <p className="text-md font-bold ">{props.price}</p>
+        <p>{props.released}</p>
       </div>
     </div>
-    </SwiperSlide>
-  ));
-
-  return (
-    <div className="flex justify-center w-full lg:w-4/5">
-      <Swiper 
-           modules={[Navigation, Pagination, A11y]}
-           spaceBetween={10}
-           slidesPerView={3}
-           navigation
-           pagination={{ clickable: true }}
-
-      >
-        {carouselCards}
-        
-      </Swiper>
-    </div>
   );
-};
-
-export default Cards;
+}

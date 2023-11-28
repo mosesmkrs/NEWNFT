@@ -1,9 +1,9 @@
 // IMPORTING REACT ROUTER
 import {createBrowserRouter, createRoutesFromElements, Route, RouterProvider} from 'react-router-dom'
-import {RedirectToSignIn, SignedIn, SignedOut} from "@clerk/clerk-react"
 //import React from 'react'
 import { useContext, useMemo } from "react";
 import { createTheme, ThemeProvider, CssBaseline} from "@mui/material";
+import { AuthenticateWithRedirectCallback } from '@clerk/clerk-react';
 import { MeshProvider } from "@meshsdk/react";
 import { createWeb3Modal, defaultWagmiConfig } from "@web3modal/wagmi/react";
 
@@ -17,7 +17,8 @@ import HomePage from './pages/Home/HomePage';
 import LaunchpadPage from './pages/launchpadPage';
 import LaunchesPage from './pages/LaunchesPage';
 import ApplyForLaunchpadPage from "./pages/ApplyForLaunchpadPage"
-import AuthenticationPage from './pages/AuthenticationPage';
+import SignInAuthenticationPage from './pages/SignInAuthenticationPage';
+import SignUpAuthenticationPage from './pages/SignUpAuthenticationPage';
 
 import TeamPage from './pages/TeamPage';
 import VerificationPage from './pages/VerificationPage';
@@ -30,7 +31,6 @@ import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import Profile from './pages/profile';
 
 import RootLayout from './layouts/RootLayout'
-import ApplyForLaunchpadLayout from './layouts/ApplyForLaunchpadLayout';
 import {ThemeContext} from "./contexts/ThemeProvider";
 
 // 1. Get projectId
@@ -54,6 +54,19 @@ createWeb3Modal({ wagmiConfig, projectId, chains });
 const appRouter = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
+      {/* AUTH */}
+      <Route path='auth'>
+        <Route path="sign-in" element={<SignInAuthenticationPage/>}>
+          {/* NO PROPS FOR THIS CLERK ELEMENT AS BEHAVIOUR IS DESCRIBED BY PARENT */}
+          <Route path="sso-callback" element={<AuthenticateWithRedirectCallback />}/>
+        </Route>
+
+        <Route path="sign-up" element={<SignUpAuthenticationPage/>}>
+          {/* NO PROPS FOR THIS CLERK ELEMENT AS BEHAVIOUR IS DESCRIBED BY PARENT */}
+          <Route path="sso-callback" element={<AuthenticateWithRedirectCallback />}/>
+        </Route>
+      </Route>
+
       {/* HOMEPAGE */}
       <Route path="/" element={<HomePage />}></Route>
       <Route path="home" element={<HomePage />}></Route>
@@ -84,31 +97,10 @@ const appRouter = createBrowserRouter(
       </Route>
 
       {/* LAUNCHPAD */}
-
       <Route path='launchpad'>
         <Route path='launches' element={<LaunchesPage/>}></Route>
         <Route path='launch details' element={<LaunchpadPage/>}></Route>
-        
-        <Route path='apply for launchpad' element={<ApplyForLaunchpadLayout/>}>
-          <Route path='auth' element={<AuthenticationPage/>}></Route>
-          
-          <Route 
-            path='apply' 
-            
-            element={
-              <div>
-                <SignedIn>
-                  <ApplyForLaunchpadPage/>
-                </SignedIn>
-
-                <SignedOut>
-                  <RedirectToSignIn redirectUrl={"/launchpad/apply for launchpad/apply"}/>
-                </SignedOut>
-              </div>
-            }
-          ></Route>
-        </Route>
-
+        <Route path='apply for launchpad' element={<ApplyForLaunchpadPage/>}></Route>
       </Route>
     </Route>
   )

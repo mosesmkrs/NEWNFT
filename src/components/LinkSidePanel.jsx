@@ -2,7 +2,10 @@
 // IMPORTING NECESSARY FILES
     // IMPORTING NECESSARY MODULES
 import { Link } from 'react-router-dom'
+    // IMPORTING NECESSARY COMPONENTS
 import { Drawer } from '@mui/material'
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
 
 // CREATING A LINKSIDEPANEL FUNCTION THAT RETURNS THE SIDE PANEL
 export default function LinkSidePanel(props){
@@ -42,23 +45,23 @@ export default function LinkSidePanel(props){
             ModalProps={{ slotProps: { backdrop: { style: styles.backDrop }}}}
         >
             <nav className='flex justify-between w-[100%] p-[10px] mb-[15px] border-b-[2px] border-b-link-side-panel-container__side-panel--navbar pb-[20px] rounded-b-[2px]'>
-                 <div className='flex justify-center items-center gap-[10px] text-center'>
-                     <p className='text-side-panel--navbar--side-buttons--p text-[16px] font-bold transition-all duration-500 ease-in-out'>EN</p>
-                
-                     <div className='text-side-panel--navbar--side-buttons--p text-[20px] font-[600] mb-[5px] cursor-pointer'>v</div>
-                
-                     <button onClick={props.toggleTheme}>
-                         {props.themeIcon}
-                     </button>
-                 </div>
+                <div className='flex justify-center items-center gap-[10px] text-center'>
+                    <p className='text-side-panel--navbar--side-buttons--p text-[16px] font-bold transition-all duration-500 ease-in-out'>EN</p>
+            
+                    <div className='text-side-panel--navbar--side-buttons--p text-[20px] font-[600] mb-[5px] cursor-pointer'>v</div>
+            
+                    <button onClick={props.toggleTheme}>
+                        {props.themeIcon}
+                    </button>
+                </div>
 
-                 <img 
-                    crossOrigin="anonymous" 
-                    src="https:static.jpgstoreapis.com/icons/close-dark.svg" 
-                    alt="close"
+                <IconButton 
                     onClick={props.hideLinkSidePanel}
                     className='w-[24px] h-[24px] cursor-pointer transition-all duration-500 ease-in-out'
-                />
+                    alt="close"
+                >
+                    <CloseIcon/>
+                </IconButton>
             </nav>
 
             <Link 
