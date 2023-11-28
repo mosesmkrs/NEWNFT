@@ -28,6 +28,7 @@ import ImpactPage from './pages/ImpactPage';
 import Faq from './pages/Faq';
 import TnC from './pages/T&C';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import Profile from './pages/profile';
 
 import RootLayout from './layouts/RootLayout'
 import {ThemeContext} from "./contexts/ThemeProvider";
@@ -69,6 +70,7 @@ const appRouter = createBrowserRouter(
       {/* HOMEPAGE */}
       <Route path="/" element={<HomePage />}></Route>
       <Route path="home" element={<HomePage />}></Route>
+      <Route path="/profile" element={<Profile />}></Route>
 
       {/* REWARDS */}
       <Route path="rewards" element={<RewardsPage />}></Route>

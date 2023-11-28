@@ -18,7 +18,7 @@ const Button = ({
 								${size}
 								${disabled && 'disabled'}
 								${noShadow && 'no-shadow'}
-			`}
+			rounded p-2 w-full bg-slate-900 `}
 			disabled={disabled}
 		>
 			{loading ? <>{loadingIndicator}</> : <>{children}</>}

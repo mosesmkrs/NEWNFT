@@ -3,8 +3,15 @@ import { useState, useEffect, useRef } from 'react'
 import { useWallet, useWalletList } from '@meshsdk/react'
 import Button from './Button'
 import Dropdown from './Dropdown'
-
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Modal from './Modal'
+import { useLovelace } from '@meshsdk/react';
+import { useAddress } from '@meshsdk/react';
+import { NavLink } from "react-router-dom";
+import BrushIcon from '@mui/icons-material/Brush';
+import SettingsIcon from '@mui/icons-material/Settings';
+import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
+
 
 const ConnectWallet = ({ closeModal }) => {
 	const { connect, disconnect, connecting } = useWallet()
@@ -12,6 +19,12 @@ const ConnectWallet = ({ closeModal }) => {
 
 	const [selectedWallet, setSelectedWallet] = useState(null)
 	const [connectionError, setConnectionError] = useState(null)
+	const [closeContent, setcloseContent] = useState(true)
+	const [isHovered, setIsHovered] = useState(false);
+	const [truncatedAddress, setTruncatedAddress] = useState('');
+
+	const lovelace = useLovelace();
+	const address = useAddress();
 
 	//error ref
 	const errorRef = useRef(null)
@@ -42,21 +55,45 @@ const ConnectWallet = ({ closeModal }) => {
 		disconnect()
 		setSelectedWallet(null)
 	}
-
+	useEffect(() => {
+		const storedWallet = localStorage.getItem('selectedWallet');
+		if (storedWallet) {
+		setSelectedWallet(JSON.parse(storedWallet));
+		connect(JSON.parse(storedWallet).name);
+		}
+		
+		
+		if (address) {
+		const startLength = 7;
+		const endLength = 6;
+	
+		const startPortion = address.substring(0, startLength);
+		const endPortion = address.substring(address.length - endLength);
+	
+		const truncatedAddress = `${startPortion}...${endPortion}`;
+		setTruncatedAddress(truncatedAddress);
+		
+		}
+	}, [connect, address]);
+	
 	return (
     <div className="fixed right-0 -top-0 p-5 items-center  justify-center w-96 z-50  bg-black bg-opacity-100 border rounded-md animateModal1">
      <span className="close-button  text-3xl absolute top-2 right-4 cursor-pointer" onClick={closeModal}>
             &times;
          </span>
-
-         <div>
+        {closeContent && (
+			<>
+  <div>
       <img className='w-12  mt-5' src='../../img/cardano.png' alt='icon'/>
       </div>
              <div className='font-bold py-3  text-xl'>
        <p> Cardano wallets</p>
         </div>
 
-      <p className=' text-sm'>By connecting your wallet, you agree to the <span className='text-[#1864F8]'>Terms & Conditions</span> and <span className='text-[#1864F8]'>Privacy Policy</span></p>
+      <p className=' text-sm mb-4'>By connecting your wallet, you agree to the <span className='text-[#1864F8]'>Terms & Conditions</span> and <span className='text-[#1864F8]'>Privacy Policy</span></p>
+			</>
+		)}
+       
 
 
       
@@ -72,14 +109,11 @@ const ConnectWallet = ({ closeModal }) => {
 								width='30'
 								height='30'
 							/>
-							<span>{selectedWallet.name}</span>
+							<span>{selectedWallet.name} connected</span>
 							
 						</div>
-					) : connecting ? (
+					) : connecting && (
 						'Connecting'
-					) : (
-						<div>
-						</div>
 					)}
 				</Button>
 			}
@@ -92,7 +126,9 @@ const ConnectWallet = ({ closeModal }) => {
 							<li
               className='text-[#9CA3AF] text-[16px] border p-3 rounded-md mb-2 flex'
 								key={wallet.name}
-								onClick={() => handleWalletSelection(wallet)}
+								onClick={() => {handleWalletSelection(wallet);
+								setcloseContent(false);
+								}}
 							>
                 <img
 									src={wallet.icon}
@@ -109,11 +145,79 @@ const ConnectWallet = ({ closeModal }) => {
 					</ul>
 				)}
 				{selectedWallet && (
+					
 					<div className='connect-wallet__disconnect '>
+						
+						<span className='flex m-3 ml-1 bg-slate-900 p-2  rounded-md w-[30%]'
+						onMouseEnter={() => setIsHovered(true)}
+						onMouseLeave={() => setIsHovered(false)}
+						>
+							<NavLink to="/profile" className='flex'>
+							<AccountCircleIcon style={{ fontSize: '2rem' ,color:'#2a2929' }} />
+						<p className='ml-3 text-lg'><b>₳ {Math.round(parseInt(lovelace) / 1000000)}</b></p>
+							</NavLink>
+							
+						{isHovered && (
+                <div className='additional-links absolute top-[52%] left-[27%] rounded-md w-8/12 border bg-slate-950'>
+                 <span className='flex m-3 border-b   p-2  rounded-md '>
+				<AccountCircleIcon style={{ fontSize: '4rem' ,color:'#2a2929' }} />
+				
+				<div>
+					<p className='w-55 break-all font-bold'><code>{truncatedAddress}</code></p>
+				
+						<p className='ml-1 text-md relative '>₳ {Math.round(parseInt(lovelace) / 1000000)}</p>
+						</div>
+				</span>
+                 <NavLink
+                    className="  py-[12px] px-[16px] hover:bg-[#2a2929] border-none flex"
+                    to="/profile"
+                  >
+					<AccountCircleIcon style={{ fontSize: '2rem' ,color:'blue' }} className='mr-2' />
+                    <p>Profile</p>
+                  </NavLink>
+                  <NavLink
+                    className=" flex py-[12px] px-[16px] hover:bg-[#2a2929] border-none"
+                    to="#"
+                  >
+					<BrushIcon className='mr-2' style={{ color:'blue' }}/>
+                    <p>Creations</p>
+                  </NavLink>
+				<NavLink
+                    className=" flex py-[12px] px-[16px] hover:bg-[#2a2929] border-none"
+                    to="#"
+                  >
+                <SettingsIcon className='mr-2' style={{ color:'blue' }}/>
+                    <p>Settings</p>
+                  </NavLink>
+				<NavLink
+                    className=" flex py-[12px] px-[16px] hover:bg-[#2a2929] border-none"
+                    to="#"
+                  >
+					<img src='../../img/moonpay.png' className='w-6 mr-2'/>
+                   <p> Buy ADA with moonpay</p>
+                  </NavLink>
+				<NavLink
+                    className=" flex py-[12px] px-[16px] hover:bg-[#2a2929] border-none"
+                    to="#"
+                  >
+					<PhoneAndroidIcon className='mr-2' style={{ color:'blue' }}/>
+                    <p>Birble Mobile</p>
+                  </NavLink>
+                  {/* ... */}
+                </div>
+              )}
+						</span>
+						
 						<Button 
-            variant='outline' onClick={handleDisconnect} noShadow>
+            variant='outline' 
+			
+			onClick={() => {
+				handleDisconnect();
+				setcloseContent(true);
+			}}  noShadow>
 							Disconnect
 						</Button>
+						
 					</div>
 				)}
 			</div>
@@ -145,3 +249,9 @@ const ConnectWallet = ({ closeModal }) => {
 }
 
 export default ConnectWallet
+
+
+
+
+
+
