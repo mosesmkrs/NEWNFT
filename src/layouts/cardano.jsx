@@ -154,7 +154,7 @@ const ConnectWallet = ({ closeModal }) => {
 						>
 							<NavLink to="/profile" className='flex'>
 							<AccountCircleIcon style={{ fontSize: '2rem' ,color:'#2a2929' }} />
-						<p className='ml-3 text-lg'><b>₳ {Math.round(parseInt(lovelace) / 1000000)}</b></p>
+						<p className='ml-3 text-lg'><b>₳ {(parseInt(lovelace) / 1000000)}</b></p>
 							</NavLink>
 							
 						{isHovered && (
