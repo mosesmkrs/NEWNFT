@@ -4,6 +4,11 @@ import {createBrowserRouter, createRoutesFromElements, Route, RouterProvider} fr
 import { useContext, useMemo } from "react";
 import { createTheme, ThemeProvider, CssBaseline} from "@mui/material";
 import { AuthenticateWithRedirectCallback } from '@clerk/clerk-react';
+import { MeshProvider } from "@meshsdk/react";
+import { createWeb3Modal, defaultWagmiConfig } from "@web3modal/wagmi/react";
+
+import { WagmiConfig } from "wagmi";
+import { arbitrum, mainnet } from "wagmi/chains";
 // IMPORTING THE NECESSARY PAGES AND LAYOUTS
 import AllCollectionsPage from './pages/AllCollectionsPage';
 import AllNftsPage from './pages/AllNftsPage';
@@ -26,6 +31,23 @@ import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 
 import RootLayout from './layouts/RootLayout'
 import {ThemeContext} from "./contexts/ThemeProvider";
+
+// 1. Get projectId
+const projectId = "a0879b9bbc96eb062ae8c28089833657";
+
+// 2. Create wagmiConfig
+const metadata = {
+  name: "Web3Modal",
+  description: "Web3Modal Component",
+  url: "https://web3modal.com",
+  icons: ["https://avatars.githubusercontent.com/u/37784886"],
+};
+
+const chains = [mainnet, arbitrum];
+const wagmiConfig = defaultWagmiConfig({ chains, projectId, metadata });
+
+// 3. Create modal
+createWeb3Modal({ wagmiConfig, projectId, chains });
 
 // CREATING A APPROUTER FUNCTION
 const appRouter = createBrowserRouter(
@@ -122,7 +144,11 @@ export default function App() {
       <CssBaseline />
       
       <div>
-        <RouterProvider router={appRouter} />
+      <MeshProvider>
+          <WagmiConfig config={wagmiConfig}>
+            <RouterProvider router={appRouter} />
+          </WagmiConfig>
+        </MeshProvider>
       </div>
     </ThemeProvider>
   );
