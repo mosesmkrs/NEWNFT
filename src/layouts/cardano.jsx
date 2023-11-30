@@ -78,7 +78,7 @@ const ConnectWallet = ({ closeModal }) => {
 	
 	return (
     <div className="fixed right-0 -top-0 p-5 items-center  justify-center w-96 z-50  bg-black bg-opacity-100 border rounded-md animateModal1">
-     <span className="close-button  text-3xl absolute top-2 right-4 cursor-pointer" onClick={closeModal}>
+     <span className="close-button  text-3xl absolute top-2 right-4 cursor-pointer text-white" onClick={closeModal}>
             &times;
          </span>
         {closeContent && (
@@ -87,10 +87,10 @@ const ConnectWallet = ({ closeModal }) => {
       <img className='w-12  mt-5' src='../../img/cardano.png' alt='icon'/>
       </div>
              <div className='font-bold py-3  text-xl'>
-       <p> Cardano wallets</p>
+       <p className='text-white'> Cardano wallets</p>
         </div>
 
-      <p className=' text-sm mb-4'>By connecting your wallet, you agree to the <span className='text-[#1864F8]'>Terms & Conditions</span> and <span className='text-[#1864F8]'>Privacy Policy</span></p>
+      <p className=' text-sm mb-4 text-white'>By connecting your wallet, you agree to the <span className='text-[#1864F8]'>Terms & Conditions</span> and <span className='text-[#1864F8]'>Privacy Policy</span></p>
 			</>
 		)}
        
@@ -154,7 +154,7 @@ const ConnectWallet = ({ closeModal }) => {
 						>
 							<NavLink to="/profile" className='flex'>
 							<AccountCircleIcon style={{ fontSize: '2rem' ,color:'#2a2929' }} />
-						<p className='ml-3 text-lg'><b>₳ {Math.round(parseInt(lovelace) / 1000000)}</b></p>
+						<p className='ml-3 text-lg text-white'><b>₳ {Math.round(parseInt(lovelace) / 1000000)}</b></p>
 							</NavLink>
 							
 						{isHovered && (
@@ -163,9 +163,9 @@ const ConnectWallet = ({ closeModal }) => {
 				<AccountCircleIcon style={{ fontSize: '4rem' ,color:'#2a2929' }} />
 				
 				<div>
-					<p className='w-55 break-all font-bold'><code>{truncatedAddress}</code></p>
+					<p className='w-55 break-all font-bold text-white'><code>{truncatedAddress}</code></p>
 				
-						<p className='ml-1 text-md relative '>₳ {Math.round(parseInt(lovelace) / 1000000)}</p>
+						<p className='ml-1 text-md relative text-white'>₳ {Math.round(parseInt(lovelace) / 1000000)}</p>
 						</div>
 				</span>
                  <NavLink
@@ -173,35 +173,35 @@ const ConnectWallet = ({ closeModal }) => {
                     to="/profile"
                   >
 					<AccountCircleIcon style={{ fontSize: '2rem' ,color:'blue' }} className='mr-2' />
-                    <p>Profile</p>
+                    <p className='text-white'>Profile</p>
                   </NavLink>
                   <NavLink
                     className=" flex py-[12px] px-[16px] hover:bg-[#2a2929] border-none"
                     to="#"
                   >
 					<BrushIcon className='mr-2' style={{ color:'blue' }}/>
-                    <p>Creations</p>
+                    <p className='text-white'>Creations</p>
                   </NavLink>
 				<NavLink
                     className=" flex py-[12px] px-[16px] hover:bg-[#2a2929] border-none"
                     to="#"
                   >
                 <SettingsIcon className='mr-2' style={{ color:'blue' }}/>
-                    <p>Settings</p>
+                    <p className='text-white'>Settings</p>
                   </NavLink>
 				<NavLink
                     className=" flex py-[12px] px-[16px] hover:bg-[#2a2929] border-none"
                     to="#"
                   >
 					<img src='../../img/moonpay.png' className='w-6 mr-2'/>
-                   <p> Buy ADA with moonpay</p>
+                   <p className='text-white'> Buy ADA with moonpay</p>
                   </NavLink>
 				<NavLink
                     className=" flex py-[12px] px-[16px] hover:bg-[#2a2929] border-none"
                     to="#"
                   >
 					<PhoneAndroidIcon className='mr-2' style={{ color:'blue' }}/>
-                    <p>Birble Mobile</p>
+                    <p className='text-white'>Birble Mobile</p>
                   </NavLink>
                   {/* ... */}
                 </div>

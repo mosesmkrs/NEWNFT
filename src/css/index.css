@@ -29,8 +29,9 @@
 }
 
 .arrow {
-  transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  
 }
 
 /* Show the dropdown content on hover */
@@ -144,4 +145,17 @@
     background-repeat: no-repeat;
     height: 30vh; /* Set the height to 100% of the viewport height */
     margin: 0;
+  }
+
+  .flex button.active {
+    border: none;
+    color:#76a9fa;
+    border-bottom: solid 2px #76a9fa;
+    padding-bottom: 12px;
+  }
+  .flex button.active:hover{
+    color: #ffffff;
+  }
+  .filterspans:hover{
+    background-color: #34373d;
   }
