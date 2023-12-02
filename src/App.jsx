@@ -29,6 +29,7 @@ import Faq from './pages/Faq';
 import TnC from './pages/T&C';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import Profile from './pages/profile';
+import SingleCollection from './pages/singleCollection';
 
 import RootLayout from './layouts/RootLayout'
 import {ThemeContext} from "./contexts/ThemeProvider";
@@ -71,6 +72,7 @@ const appRouter = createBrowserRouter(
       <Route path="/" element={<HomePage />}></Route>
       <Route path="home" element={<HomePage />}></Route>
       <Route path="/profile" element={<Profile />}></Route>
+      <Route path="/singleCollection" element={<SingleCollection />}></Route>
 
       {/* REWARDS */}
       <Route path="rewards" element={<RewardsPage />}></Route>

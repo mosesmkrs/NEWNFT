@@ -96,11 +96,11 @@ const Profile = () => {
          <div style={{   background: '#18191B', border: '1px solid #6B7280' }} className='flex ml-10 w-fit space-x-0 rounded-lg mb-12'>
             <div  className='py-1 px-5 text-white border-r' style={{ borderColor: '#6b7280'}}>
                 <p>Season Rank</p>
-                <span style={{  color:'#76a9fa' }}>--</span>
+                <span >--</span>
             </div>
             <div  className='py-1 px-5 text-white border-r' style={{ borderColor: '#6b7280'}}>
                 <p>All Time Rank</p>
-                <span style={{  color:'#76a9fa' }}>--</span>
+                <span >--</span>
             </div>
             <div  className='py-1 px-5 text-white border-r' style={{ borderColor: '#6b7280'}}>
                 <p>Wallet</p>
