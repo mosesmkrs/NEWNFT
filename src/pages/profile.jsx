@@ -4,6 +4,8 @@ import { useAddress } from '@meshsdk/react';
 import ShareIcon from '@mui/icons-material/Share';
 import { BrowserWallet } from '@meshsdk/core';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import CheckIcon from '@mui/icons-material/Check';
 
 const wallet = await BrowserWallet.enable('eternl');
 
@@ -12,10 +14,14 @@ const Profile = () => {
   const address = useAddress();
   
   const [truncatedAddress, setTruncatedAddress] = useState('');
-  const [truncatedrewardAddress, setrewardAddress] = useState('');
+  const [truncatedrewardAddress, setruncatedrewardAddress] = useState('');
+  const [rewardAddress, setrewardAddress] = useState('');
   const [activeTab, setActiveTab] = useState('My NFTs (0)');
   const [isHovered, setIsHovered] = useState(false);
   const [selectedText, setSelectedText] = useState('All Listing');
+  const [isCopiedAddress, setIsCopiedAddress] = useState(false);
+  const [isCopiedRewardAddress, setIsCopiedRewardAddress] = useState(false);
+
 
 
 
@@ -30,7 +36,10 @@ const Profile = () => {
         const endPortion = rewardAddresses[0].substring(rewardAddresses[0].length - endLength);
 
         const truncatedrewardAddress = `${startPortion}...${endPortion}`;
-        setrewardAddress(truncatedrewardAddress)
+        setruncatedrewardAddress(truncatedrewardAddress)
+        setrewardAddress(rewardAddresses)
+       
+
       }
       
 
@@ -48,6 +57,24 @@ const Profile = () => {
 
     fetchData();
   }, [address]);
+
+  
+
+  const copyToClipboard = (text, setIsCopied) => {
+    navigator.clipboard.writeText(text)
+      .then(() => {
+        setIsCopied(true);
+
+        // Revert the copied state after 2 seconds (adjust as needed)
+        setTimeout(() => {
+          setIsCopied(false);
+        }, 2000);
+      })
+      .catch((err) => {
+        console.error('Unable to copy text to clipboard:', err);
+      });
+  };
+
 
 
   function changeTab(clickedButton) {
@@ -104,11 +131,26 @@ const Profile = () => {
             </div>
             <div  className='py-1 px-5 text-white border-r' style={{ borderColor: '#6b7280'}}>
                 <p>Wallet</p>
-                <span style={{  color:'#76a9fa' }}>{truncatedAddress}</span>
+                <span className='flex' style={{  color:'#76a9fa' }}>
+                  {truncatedAddress}
+                  {isCopiedAddress ? (
+                      <CheckIcon className='p-1' />
+                    ) : (
+                      <ContentCopyIcon className='p-1' onClick={() => copyToClipboard(address, setIsCopiedAddress)} />
+                    )}
+                  </span>
             </div>
             <div  className='py-1 px-5 text-white '>
                 <p>Stake Address</p>
-                <span style={{  color:'#76a9fa' }}>{truncatedrewardAddress}</span>
+                <span className='flex' style={{  color:'#76a9fa' }}>
+                  {truncatedrewardAddress}
+                  {isCopiedRewardAddress ? (
+                      <CheckIcon className='p-1' />
+                    ) : (
+                      <ContentCopyIcon className='p-1' onClick={() => copyToClipboard(rewardAddress, setIsCopiedRewardAddress)} />
+                    )}
+                  
+                  </span>
             </div>
           </div>
 

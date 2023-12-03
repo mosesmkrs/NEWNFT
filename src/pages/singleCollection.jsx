@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import VerifiedIcon from '@mui/icons-material/Verified';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import LanguageIcon from '@mui/icons-material/Language';
@@ -6,11 +6,13 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { FaDiscord } from "react-icons/fa6";
 import SearchIcon from "@mui/icons-material/Search";
 import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
-import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
+
 import ElectricBoltIcon from '@mui/icons-material/ElectricBolt';
 import AllNftsPageCard from '../components/AllNftsPage/AllNftsPageCard';
 import allCollectionsCardData from '../database/allCollectionsCardData';
 import CachedIcon from '@mui/icons-material/Cached';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import CheckIcon from '@mui/icons-material/Check';
 
 //imports for table
 
@@ -45,6 +47,42 @@ function SingleCollection() {
     
     const initialText = "The Ape Society is a collection of 7,000 NFTs generated on the Cardano blockchain. Every holder is a member of one of 35 families, and gets access to the DAO. We aim to create tools, resources, art, and harness the power of community to create a breeding ground for knowledge, collaboration, and fun.";
 
+    const policyid = 'dac355946b4317530d9ec0cb142c63a4b624610786c2a32137d78e25'
+    const [truncatedpolicyid, setTruncatedpolicyid] = useState(false);
+    const [isCopiedPolicyid, setIsCopiedPolicyid] = useState(false);
+
+    useEffect(() => {
+        const fetchData = async () => {
+    
+          if (policyid) {
+            const startLength = 6;
+            const endLength = 6;
+    
+            const startPortion = policyid.substring(0, startLength);
+            const endPortion = policyid.substring(policyid.length - endLength);
+    
+            const truncatedpolicyid = `${startPortion}...${endPortion}`;
+            setTruncatedpolicyid(truncatedpolicyid);
+          }
+        };
+    
+        fetchData();
+      }, [policyid]);
+
+      const copyToClipboard = (text, setIsCopied) => {
+        navigator.clipboard.writeText(text)
+          .then(() => {
+            setIsCopied(true);
+    
+            // Revert the copied state after 2 seconds (adjust as needed)
+            setTimeout(() => {
+              setIsCopied(false);
+            }, 2000);
+          })
+          .catch((err) => {
+            console.error('Unable to copy text to clipboard:', err);
+          });
+      };
   const [showFullText, setShowFullText] = useState(false);
   const [activeTab, setActiveTab] = useState('NFTs');
 
@@ -100,7 +138,13 @@ function nftCardsArrayGenerator(){
                         </section>
 
                         <section className="flex">
-                            <p className='mr-5 mt-2  text-blue-500 font-bold text-sm'>policy ID: mdhrw764c...ye987dc</p>
+                            <p className='mr-2 mt-2 flex  text-blue-500 font-bold text-sm'>policy ID: {truncatedpolicyid}
+                            {isCopiedPolicyid ? (
+                                    <CheckIcon className='p-1' />
+                                ) : (
+                                    <ContentCopyIcon className='p-1' onClick={() => copyToClipboard(policyid,setIsCopiedPolicyid)} />
+                                )}
+                            </p>
                         <div style={{   background: '#18191B', border: '1px solid #6B7280' }} className='flex  w-fit space-x-0 rounded-lg '>
                             <div  className='py-1 px-2 pt-2.5 text-white border-r' style={{ borderColor: '#6b7280'}}>
                                 <FaDiscord style={{ color: '#6B7280' }} className='w-5'/>
@@ -218,7 +262,9 @@ function nftCardsArrayGenerator(){
                 <section className='flex justify-between my-5'>
                       <div className='flex'>
                             <button style={{  color:'#ffffff', background: '#18191B', border: '1px solid #6B7280' }} className='text-[14px] rounded-lg py-2 px-3 m-1 text-sm font-bold flex '>
-                           <FilterAltOutlinedIcon style={{ color: '#6B7280' }} />
+
+                            <svg className='w-5 mr-1 text-gray-500' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z"></path></svg>
+                            
                                Filters
                             </button>
                       </div>
