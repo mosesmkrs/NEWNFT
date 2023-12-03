@@ -10,6 +10,35 @@ import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
 import ElectricBoltIcon from '@mui/icons-material/ElectricBolt';
 import AllNftsPageCard from '../components/AllNftsPage/AllNftsPageCard';
 import allCollectionsCardData from '../database/allCollectionsCardData';
+import CachedIcon from '@mui/icons-material/Cached';
+
+//imports for table
+
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+
+
+const createData = (name, number) => {
+    return { name, number };
+  };
+  
+  const rows = [
+    createData('₳ 3975', 2),
+    createData('₳ 3827', 1),
+    createData('₳ 3650', 1),
+    createData('₳ 50', 1),
+    createData('₳ 25', 1),
+    createData('₳ 20', 1),
+    createData('₳ 11', 1),
+    createData('₳ 7', 1),
+    createData('₳ 6', 1),
+    createData('₳ 5', 1),
+  ];
 
 
 function SingleCollection() {
@@ -228,23 +257,91 @@ function nftCardsArrayGenerator(){
         )}
 
         {activeTab === 'Activity' && (
-            <>
-            <p>Activity</p>
-            </>
+             <div className='w-[90%] mx-auto'>
+             Activity section under development!!!
+               
+            </div>
         )}
       
       {/* FAVORITES SECTION */}
         {activeTab === 'Analytics' && (
-           <div>
-         Analytics
+           <div className='w-[90%] mx-auto'>
+        Analytics section under development!!!
           
        </div>
         )}
 
+
+
         {activeTab === 'Offers' && (
-            <>
-            <p>Offers</p>
-            </>
+            <div className='w-[90%] mx-auto'>
+                <section className='flex justify-between'>
+                        <button  style={{   background: '#18191B', border: '1px solid #6B7280' }} className='py-2 px-3 font-bold m-1 rounded-lg text-white text-sm'>
+                                        New Collection Offer
+                        </button>
+                        <button
+                            className='py-2 px-3 font-bold m-1 rounded-lg text-gray-500  text-sm bg-gray-800 flex'>
+                                <ElectricBoltIcon className='p-0.5 mr-2'/>
+                                    Instant sale N/A
+                            </button>
+                </section>
+
+                <div style={{   background: '#18191B', border: '1px solid #6B7280' }} className='w-full flex mx-auto my-3 bg-[#18191B] rounded-lg p-2'>
+                      <SearchIcon className="text-gray-600 m-auto mx-2 " />
+                      <input
+                      
+                       type="text"
+                       style={{   background: '#18191B' }}
+                       name="searchInput"
+                       className=" rounded-md  w-[100%] text-sm "
+                       placeholder="Search NFTs..."  
+                />
+               
+                      </div>
+
+                      <section className='flex justify-between'>
+                        <section className='mb-8 mt-3'>
+                           
+                        <TableContainer style={{   background: '#18191B', border: '1px solid #6B7280' }} component={Paper}>
+                                <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                                    <TableHead>
+                                    <TableRow >
+                                        <TableCell sx={{ fontFamily:'lexend', fontSize:'16px' }}>Collection Offers</TableCell>
+                                        <TableCell sx={{ fontFamily:'lexend' }} align='right'><CachedIcon /></TableCell>
+                                        
+                                    </TableRow>
+                                    <TableRow sx={{ backgroundColor:'#1d2022' }}>
+                                        <TableCell sx={{ color:'#6B7280', fontSize:'12px', fontWeight:'bold',fontFamily:'lexend' }}>OFFER</TableCell>
+                                        <TableCell sx={{ color:'#9ca3af', fontSize:'12px', fontWeight:'bold',fontFamily:'lexend' }} >NUMBER OF OFFERS</TableCell>
+                                        
+                                    </TableRow>
+                                    </TableHead>
+                                    <TableBody>
+                                    {rows.map((row) => (
+                                        <TableRow
+                                        key={row.name}
+                                        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                        >
+                                        <TableCell component="th" scope="row">
+                                            {row.name}
+                                        </TableCell>
+                                        <TableCell sx={{fontFamily:'lexend'}}>{row.number}</TableCell>
+                                        </TableRow>
+                                    ))}
+                                    </TableBody>
+                                </Table>
+                            </TableContainer>
+                        </section>
+                        <section className='w-full ml-3 mt-3'>
+                            <div className='rounded-md' style={{   background: '#18191B', border: '1px solid #6B7280' }}>
+                            <p className=' p-3 font-bold text-sm border-b-1' style={{borderBottom: '1px solid #6B7280'}}> Choose NFT to sell</p>
+                            <p className='p-12 text-center font-bold'>You do not own any NFTs from this collection!</p>
+                            </div>
+                        </section>
+
+                      </section>
+
+            </div>
         )}
 
        
