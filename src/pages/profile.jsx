@@ -141,7 +141,7 @@ const Profile = () => {
                   </span>
             </div>
             <div  className='py-1 px-5 text-white '>
-                <p>Stake Address</p>
+                <p>Stake key</p>
                 <span className='flex' style={{  color:'#76a9fa' }}>
                   {truncatedrewardAddress}
                   {isCopiedRewardAddress ? (

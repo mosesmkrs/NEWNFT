@@ -305,12 +305,7 @@ export default function Navbar(props) {
               <NotificationsIcon className="text-[#9CA3AF] cursor-pointer" />
             </span>
 
-            <div
-              className="text-[#9CA3AF] text-[16px]"
-              onClick={props.toggleLanguage}
-            >
-              EN
-            </div>
+           
 
             <button
               className="text-[#000000] flex text-[14px] bg-[#FFDB24] py-[8px] px-[0px] border-none rounded-[8px] m-[0px] ml-[5px] transition-all duration-500 ease-in-out cursor-pointer active:scale-[0.8] active:opacity-[0.7]"
