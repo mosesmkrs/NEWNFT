@@ -53,7 +53,7 @@ export default function WhaleActivityContainer() {
 
   return (
     <div
-      className="flex flex-col justify-center items-center keen-slider transition-all duration-500 my-[10px]"
+      className="flex flex-col justify-center items-center keen-slider transition-all duration-500 my-[10px] px-8"
       ref={sliderRef}
     >
       <h1 className="title-sm  mr-auto px-4 mb-5 text-xl font-extrabold tracking-wider">
@@ -83,7 +83,7 @@ export default function WhaleActivityContainer() {
       )}
 
       {loaded && instanceRef.current && (
-        <div className="justify-center flex py-[10px]">
+        <div className="justify-center flex py-[10px] sm:hidden">
           {[
             ...Array(instanceRef.current.track.details.slides.length).keys(),
           ].map((idx) => {
