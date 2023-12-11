@@ -61,13 +61,13 @@ export default function WhaleActivityContainer(){
     >
       <h1 className='title-sm  mr-auto px-4 mb-5 text-xl font-extrabold tracking-wider' >Whale activity</h1>
       
-      <div className="flex w-full lg:w-4/5">
+      <div className="flex w-full lg:w-4/5 items-center justify-center">
           {whaleActivityCardArrayGenerator()}
       </div>
 
       {
         loaded && instanceRef.current && 
-          <div>
+          <div className="max-[640px]:hidden">
             <CarouselArrow
               left
               
