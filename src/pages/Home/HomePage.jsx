@@ -36,7 +36,7 @@ export default function HomePage() {
 
             <div className="flex flex-row flex-nowrap gap-2 items-center whitespace-nowrap text-2xl mr-auto w-full justify-self-start text-left ">Top collections
               <div className="flex flex-row flex-nowrap gap-1">
-                <span className="h3 text-2xl font-bold flex flex-row flex-nowrap items-center">Generative</span>
+                <span className="text-[#76a9fa] text-2xl font-bold flex flex-row flex-nowrap items-center">Generative</span>
               
                 <Icon
                   icon="mingcute:down-fill"
