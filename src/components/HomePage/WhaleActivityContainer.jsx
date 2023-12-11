@@ -60,7 +60,7 @@ export default function WhaleActivityContainer() {
         Whale activity
       </h1>
       <div className="flex w-11/12 justify-normal items-center">
-        <div className="flex w-full lg:w-4/5 px-4">
+        <div className="flex w-full lg:w-4/5 px-1">
           {whaleActivityCardArrayGenerator()}
         </div>
       </div>
