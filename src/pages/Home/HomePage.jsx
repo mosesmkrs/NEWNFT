@@ -5,8 +5,7 @@ import WhaleActivityContainer from "../../components/HomePage/WhaleActivityConta
 import Table from "../../components/HomePage/Table";
 import { Icon } from "@iconify/react";
 import AllCollectionsPageCard from "../../components/AllCollectionsPage/AllCollectionsPageCard";
-  // IMPORTING CSS FILE
-import "./Home.css";
+  
   // IMPORTING DATABASES
 import allCollectionsCardData from "../../database/allCollectionsCardData";
 
