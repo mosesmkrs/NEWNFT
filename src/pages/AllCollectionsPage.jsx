@@ -30,9 +30,10 @@ export default function AllCollectionsPage(){
   // A FUNCTION TO GENERATE AN ARRAY OF COLLECTION CARDS
   function collectionCardsArrayGenerator(){
     return allCollectionsCardData.map((cardData, index) => (
-      <NavLink
+      
+ <NavLink
       key = {index}
-      to='/singleCollection'
+      to={`/singleCollection/?singleCollectionID=${index}`}
       >
       <AllCollectionsPageCard
               key = {index}
@@ -41,8 +42,10 @@ export default function AllCollectionsPage(){
               volume = {cardData.volume}
             />
       </NavLink>
+      ))
+     
       
-    ))
+    
   }
 
   return (

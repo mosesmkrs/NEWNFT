@@ -19,6 +19,7 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { TextField } from "@mui/material";
 import { ThemeContext } from "../contexts/ThemeProvider";
+import Selected from "../layouts/selected";
 
 // EXPORTING A FUNCTION THAT CREATES A NAVBAR COMPONENT
 export default function Navbar(props) {
@@ -35,11 +36,24 @@ export default function Navbar(props) {
     }
   };
 
+
   const [showAdditionalButtons, setShowAdditionalButtons] = useState(false);
+  const [isButtonOpen, setIsButtonOpen] = useState(true);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isHoveredd, setIsHoveredd] = useState(false);
+ 
+
+  
   
   const toggleAdditionalButtons = () => {
-    setShowAdditionalButtons(!showAdditionalButtons);
+    setShowAdditionalButtons(true);
+    setIsButtonOpen(false);
   };
+  const togglebutton=() =>{
+    setIsButtonOpen(true);
+    setShowAdditionalButtons(false);
+  }
+
 
   // AN OBJECT CONTAINING CSS PROPERITES
   const styles = { input: {
@@ -304,38 +318,67 @@ export default function Navbar(props) {
             <span className="m-0 mr-[20px] text-[#FFF] text-[14px] font-[400] leading-normal">
               <NotificationsIcon className="text-[#9CA3AF] cursor-pointer" />
             </span>
+           
+            {props.selectedWallet ? (
+              <>
+              <Selected/>
 
            
-
-            <button
-              className="text-[#000000] flex text-[14px] bg-[#FFDB24] py-[8px] px-[0px] border-none rounded-[8px] m-[0px] ml-[5px] transition-all duration-500 ease-in-out cursor-pointer active:scale-[0.8] active:opacity-[0.7]"
-              onClick={toggleAdditionalButtons}
-            >
-              <span>Connect wallet </span>
-              <span>
-                <KeyboardArrowDownIcon className="m-0 p-0 -ml-1" />
-              </span>
-            </button>
-          </div>
-        </div>
+              </>
+       
+      ):(
+        <>
+         {isButtonOpen && (
+                <button
+                className="text-[#000000] flex text-[14px] bg-[#FFDB24] py-[8px] px-[0px] border-none rounded-[8px] m-[0px] ml-[5px] transition-all duration-500 ease-in-out cursor-pointer active:scale-[0.8] active:opacity-[0.7]"
+                onClick={toggleAdditionalButtons}
+              >
+                <span>Connect wallet </span>
+                <span>
+                  <KeyboardArrowDownIcon className="m-0 p-0 -ml-1" />
+                </span>
+              </button>
+              
+           )}
+          
+          
         {showAdditionalButtons && (
-          <div className="additional-buttons absolute top-14 right-0 mt-[10px] mr-5 flex flex-col space-y-2 ">
+          <div className=" flex additional-btns relative right-[2%] ">
             <button
               onClick={props.toggleCardanoModal}
-              className="additional-button text-[#ffffff] text-[14px] bg-[#1864F8] py-[8px] px-[4px] border-none rounded-[8px]"
+              className="additional-button text-[#ffffff] text-[14px] py-[8px] px-[4px] mr-3 border-none rounded-[8px]"
             >
-              Cardano wallet
+              <img className="w-7" src="/img/cardanoImg.png" alt="img" 
+               onMouseEnter={() => setIsHovered(true)}
+               onMouseLeave={() => setIsHovered(false)}/>
+              {isHovered &&(
+                <p className="absolute   text-slate-400">Cardano wallet</p>
+              )}
             </button>
 
             <button
+             onMouseEnter={() => setIsHoveredd(true)}
+             onMouseLeave={() => setIsHoveredd(false)}
               onClick={connectWallet}
-              className="additional-button text-[#ffffff] text-[14px] bg-[#1864F8] py-[8px] px-[4px] border-none rounded-[8px]"
+              className="additional-button text-[#ffffff] text-[14px] py-[8px] px-[4px] border-none rounded-[8px]"
             >
-              Etherium wallet
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="tw-w-[18px] tw-h-[18px] md:tw-w-[24px] md:tw-h-[24px]" color="#998CA6"><path d="M11.7984 15.8266L11.7999 9.09692L5.33984 11.9317L11.7984 15.8266Z" fill="#998CA6"></path><path d="M11.835 9.09692L11.8335 15.8282L18.2948 11.9317L11.835 9.09692Z" fill="#998CA6"></path><path d="M18.2881 11.894L11.8335 1.28885L11.835 9.06219L18.2881 11.894Z" fill="#998CA6"></path><path d="M11.8341 16.9274L11.8335 22.1225L18.3002 13.2196L11.8341 16.9274Z" fill="#998CA6"></path><path d="M11.7985 22.119L11.7991 16.9263L5.33447 13.2196L11.7985 22.119Z" fill="#998CA6"></path><path d="M5.34668 11.8941L11.8001 9.06225L11.7986 1.29299L5.34668 11.8941Z" fill="#998CA6"></path><path d="M11.817 15.875L11.8296 15.868L18.3387 11.9427L18.352 11.9348L11.8327 1.22256L11.8176 1.2L11.8021 1.22256L5.28223 11.9348L11.8046 15.8682L11.817 15.8753V15.875ZM18.2879 11.894L11.8348 9.06221L11.8336 1.28887L18.2879 11.894ZM11.8348 9.097L18.2946 11.9318L11.8336 15.8283L11.8348 9.097ZM11.7985 15.8267L5.33995 11.9318L11.8 9.097L11.7985 15.8267ZM5.34659 11.894L11.7985 1.29295L11.8 9.06221L5.34659 11.894Z" fill="#998CA6"></path><path d="M5.21729 13.1153L11.8055 22.1854L11.8173 22.2001L11.8294 22.1854L18.4173 13.1153L11.8173 16.8998L5.21729 13.1153ZM11.7986 22.1191L5.33454 13.2197L11.7992 16.9264L11.7986 22.1191ZM11.8339 16.9275L18.3 13.2197L11.8336 22.1226L11.8342 16.9275H11.8339Z" fill="#998CA6"></path></svg>
+              {isHoveredd &&(
+                <p className="absolute text-slate-400">Etherium wallet</p>
+              )}
             </button>
+            <span className="close-button  text-2xl  cursor-pointer text-slate-500" onClick={togglebutton}>
+            &times;
+         </span>
           </div>
         )}
+        </>
+      )}
+          </div>
+        </div>  
+          
       </div>
+     
     </div>
   );
 }

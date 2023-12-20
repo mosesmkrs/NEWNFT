@@ -39,7 +39,9 @@ export default function RootLayout(){
         }))
     }
 
+const [selectedWallet, setSelectedWallet] = useState(null);
 
+  
    
     const [isCardanoModalOpen, setIsCardanoModalOpen] = useState(false); // State to manage the Cardano modal
     // Function to open or close the Cardano modal
@@ -63,7 +65,7 @@ export default function RootLayout(){
                     }
                 />
             }           
-
+        
             {   
                 showSearchBar && <SearchBar 
                     hideSearchBar = {() => setShowSearchBar(false)}
@@ -76,10 +78,11 @@ export default function RootLayout(){
                 showLinkSidePanel = {() => setShowLinkSidePanel(true)}
                 showSearchBar = {() => setShowSearchBar(true)}
                 toggleCardanoModal={toggleCardanoModal}
+                selectedWallet={selectedWallet}
                
              />
 
-{isCardanoModalOpen && <ConnectWallet closeModal={toggleCardanoModal} />}
+{isCardanoModalOpen && <ConnectWallet closeModal={toggleCardanoModal}  onSelectWallet={(wallet) => setSelectedWallet(wallet)}/>}
             <Outlet/>
           
             <Footer/>
