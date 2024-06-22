@@ -9,7 +9,7 @@ import CheckIcon from '@mui/icons-material/Check';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import 'keen-slider/keen-slider.min.css'
 import { useKeenSlider } from 'keen-slider/react'
-const wallet = await BrowserWallet.enable('eternl');
+
 
 const Profile = () => {
     
@@ -29,6 +29,7 @@ const Profile = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      const wallet = await BrowserWallet.enable("eternl");
       const rewardAddresses = await wallet.getRewardAddresses();
       if(rewardAddresses && rewardAddresses.length > 0){
         const startLength = 12;
@@ -130,7 +131,7 @@ const Profile = () => {
                 Edit profile
             </button>
 
-          <div  style={{   background: '#18191B', border: '1px solid #6B7280' }} className='py-2 px-3 m-1 rounded-lg text-white'>
+          <div  style={{   background: '#18191B', border: '1px solid #6B7280' }} className='px-3 py-2 m-1 text-white rounded-lg'>
            <ShareIcon/>
           </div>
          </div>
@@ -140,16 +141,16 @@ const Profile = () => {
             </button>
          </div>
 
-         <div style={{   background: '#18191B', border: '1px solid #6B7280' }} className='flex mx-auto w-fit space-x-0 rounded-lg mb-5 tablee'>
-            <div  className='py-1 px-5 text-white tableecontent border-r' style={{ borderColor: '#6b7280'}}>
+         <div style={{   background: '#18191B', border: '1px solid #6B7280' }} className='flex mx-auto mb-5 space-x-0 rounded-lg w-fit tablee'>
+            <div  className='px-5 py-1 text-white border-r tableecontent' style={{ borderColor: '#6b7280'}}>
                 <p>Season Rank</p>
                 <span >--</span>
             </div>
-            <div  className='py-1 px-5 text-white tableecontent border-r' style={{ borderColor: '#6b7280'}}>
+            <div  className='px-5 py-1 text-white border-r tableecontent' style={{ borderColor: '#6b7280'}}>
                 <p>All Time Rank</p>
                 <span >--</span>
             </div>
-            <div  className='py-1 px-5 text-white tableecontent border-r' style={{ borderColor: '#6b7280'}}>
+            <div  className='px-5 py-1 text-white border-r tableecontent' style={{ borderColor: '#6b7280'}}>
                 <p>Wallet</p>
                 <span className='flex' style={{  color:'#76a9fa' }}>
                   {truncatedAddress}
@@ -160,7 +161,7 @@ const Profile = () => {
                     )}
                   </span>
             </div>
-            <div  className='py-1 px-5 text-white tableecontent '>
+            <div  className='px-5 py-1 text-white tableecontent '>
                 <p>Stake key</p>
                 <span className='flex' style={{  color:'#76a9fa' }}>
                   {truncatedrewardAddress}
@@ -180,37 +181,37 @@ const Profile = () => {
           </div>
           
           <div className="flex border-b mb-5 ml-10 w-[80%] noslide">
-            <div  className="font-bold mr-8 text-sm "><button    className={`pb-3 ${activeTab === 'My NFTs (0)' ? 'active' : ''}`}  onClick={(e) => changeTab(e.target)} >My NFTs (0)</button></div>
+            <div  className="mr-8 text-sm font-bold "><button    className={`pb-3 ${activeTab === 'My NFTs (0)' ? 'active' : ''}`}  onClick={(e) => changeTab(e.target)} >My NFTs (0)</button></div>
 
-            <div  className="font-bold mr-8 text-sm "><button    className={`pb-3 ${activeTab === 'For Sale' ? 'active' : ''}`}  onClick={(e) => changeTab(e.target)} >For Sale</button></div>
+            <div  className="mr-8 text-sm font-bold "><button    className={`pb-3 ${activeTab === 'For Sale' ? 'active' : ''}`}  onClick={(e) => changeTab(e.target)} >For Sale</button></div>
 
-            <div  className="font-bold mr-8 text-sm "><button    className={`pb-3 ${activeTab === 'Activity' ? 'active' : ''}`}  onClick={(e) => changeTab(e.target)} >Activity</button></div>
+            <div  className="mr-8 text-sm font-bold "><button    className={`pb-3 ${activeTab === 'Activity' ? 'active' : ''}`}  onClick={(e) => changeTab(e.target)} >Activity</button></div>
 
-            <div  className="font-bold mr-8 text-sm "><button    className={`pb-3 ${activeTab === 'Favorites' ? 'active' : ''}`}  onClick={(e) => changeTab(e.target)} >Favorites</button></div>
+            <div  className="mr-8 text-sm font-bold "><button    className={`pb-3 ${activeTab === 'Favorites' ? 'active' : ''}`}  onClick={(e) => changeTab(e.target)} >Favorites</button></div>
 
-            <div  className="font-bold mr-8 text-sm "><button    className={`pb-3 ${activeTab === 'Offers' ? 'active' : ''}`}  onClick={(e) => changeTab(e.target)} >Offers</button></div>
+            <div  className="mr-8 text-sm font-bold "><button    className={`pb-3 ${activeTab === 'Offers' ? 'active' : ''}`}  onClick={(e) => changeTab(e.target)} >Offers</button></div>
 
-            <div  className="font-bold mr-8 text-sm "><button    className={`pb-3 ${activeTab === 'Creations (0)' ? 'active' : ''}`}  onClick={(e) => changeTab(e.target)} >Creations (0)</button></div>
+            <div  className="mr-8 text-sm font-bold "><button    className={`pb-3 ${activeTab === 'Creations (0)' ? 'active' : ''}`}  onClick={(e) => changeTab(e.target)} >Creations (0)</button></div>
 
           </div>
 
           <div className='slide'>
           <div className="flex  border-b my-5 pt-2 px-10 mx-auto w-[80%] keen-slider" ref={sliderRef} >
-            <section className='keen-slider__slide flex '>
-                <div  className="font-bold  mr-8 text-sm "><button    className={`pb-3 ${activeTab === 'My NFTs (0)' ? 'active' : ''}`}  onClick={(e) => changeTab(e.target)} >My NFTs (0)</button></div>
+            <section className='flex keen-slider__slide '>
+                <div  className="mr-8 text-sm font-bold "><button    className={`pb-3 ${activeTab === 'My NFTs (0)' ? 'active' : ''}`}  onClick={(e) => changeTab(e.target)} >My NFTs (0)</button></div>
 
-                <div  className="font-bold  mr-8 text-sm "><button    className={`pb-3 ${activeTab === 'For Sale' ? 'active' : ''}`}  onClick={(e) => changeTab(e.target)} >For Sale</button></div>
+                <div  className="mr-8 text-sm font-bold "><button    className={`pb-3 ${activeTab === 'For Sale' ? 'active' : ''}`}  onClick={(e) => changeTab(e.target)} >For Sale</button></div>
 
-                <div  className="font-bold  mr-8 text-sm "><button    className={`pb-3 ${activeTab === 'Activity' ? 'active' : ''}`}  onClick={(e) => changeTab(e.target)} >Activity</button></div>
-                <div  className="font-bold  mr-8 text-sm "><button    className={`pb-3 ${activeTab === 'Favorites' ? 'active' : ''}`}  onClick={(e) => changeTab(e.target)} >Favorites</button></div>
+                <div  className="mr-8 text-sm font-bold "><button    className={`pb-3 ${activeTab === 'Activity' ? 'active' : ''}`}  onClick={(e) => changeTab(e.target)} >Activity</button></div>
+                <div  className="mr-8 text-sm font-bold "><button    className={`pb-3 ${activeTab === 'Favorites' ? 'active' : ''}`}  onClick={(e) => changeTab(e.target)} >Favorites</button></div>
                 <p>&gt;&gt;</p>
 
             </section>
-            <section className='keen-slider__slide flex'>
+            <section className='flex keen-slider__slide'>
                
-              <div  className="font-bold  mr-8 text-sm "><button    className={`pb-3 ${activeTab === 'Offers' ? 'active' : ''}`}  onClick={(e) => changeTab(e.target)} >Offers</button></div>
+              <div  className="mr-8 text-sm font-bold "><button    className={`pb-3 ${activeTab === 'Offers' ? 'active' : ''}`}  onClick={(e) => changeTab(e.target)} >Offers</button></div>
 
-              <div  className="font-bold  mr-8 text-sm "><button    className={`pb-3 ${activeTab === 'Creations (0)' ? 'active' : ''}`}  onClick={(e) => changeTab(e.target)} >Creations (0)</button></div>
+              <div  className="mr-8 text-sm font-bold "><button    className={`pb-3 ${activeTab === 'Creations (0)' ? 'active' : ''}`}  onClick={(e) => changeTab(e.target)} >Creations (0)</button></div>
 
             </section>
             
@@ -235,12 +236,12 @@ const Profile = () => {
                             className=" rounded-sm  font-bold border-b w-[30%] pb-2 "
                             placeholder="Search NFTs"  
                      />
-                       <h2 className='font-bold ml-4' style={{ color: '#9ca3af'  }}>0 Match</h2>
+                       <h2 className='ml-4 font-bold' style={{ color: '#9ca3af'  }}>0 Match</h2>
                       </section>
 
                        <div className='flex buttonsinsearch'>
                      <button style={{ color: '#9ca3af',background: '#232a2e'  }} className='px-3 py-2 mr-2 font-bold rounded-lg'>Bulk List</button>
-                     <button style={{ color: '#9ca3af',background: '#232a2e'  }} className='px-3 py-2  font-bold rounded-lg'>New Bundle +</button>
+                     <button style={{ color: '#9ca3af',background: '#232a2e'  }} className='px-3 py-2 font-bold rounded-lg'>New Bundle +</button>
                     </div>
                       </div>
                    
@@ -262,7 +263,7 @@ const Profile = () => {
                          className=" rounded-sm  font-bold border-b w-[30%] pb-2 "
                          placeholder="Search NFTs for sale"  
                   />
-                    <h2 className='font-bold mx-4' style={{ color: '#9ca3af'  }}>0 Matches</h2>
+                    <h2 className='mx-4 font-bold' style={{ color: '#9ca3af'  }}>0 Matches</h2>
                     <div className='flex'
                    onMouseEnter={() => setIsHovered(true)}
                    onMouseLeave={() => setIsHovered(false)}
@@ -270,7 +271,7 @@ const Profile = () => {
                     <p>{selectedText}</p>
                     <KeyboardArrowDownIcon/>
                     {isHovered && (
-                        <div  style={{   background: '#18191B',border: '1px solid #6B7280' }} className='grid border w-1/6  rounded-md mt-5 absolute'>
+                        <div  style={{   background: '#18191B',border: '1px solid #6B7280' }} className='absolute grid w-1/6 mt-5 border rounded-md'>
                            <span onClick={() => handleSpanClick('All Listing')} className={`font-bold p-3 filterspans ${selectedText === 'All Listing' ? 'border' : ''}`}>All Listing</span>
 
                             <span onClick={() => handleSpanClick('Bundles')} className={`font-bold p-3 filterspans ${selectedText === 'Bundles' ? 'border' : ''}`}>Bundles</span>
@@ -306,7 +307,7 @@ const Profile = () => {
                        className=" rounded-sm  font-bold border-b w-[30%] pb-2 "
                        placeholder="Search NFTs"  
                 />
-                  <h2 className='font-bold mx-4' style={{ color: '#9ca3af'  }}>0 Matches</h2>
+                  <h2 className='mx-4 font-bold' style={{ color: '#9ca3af'  }}>0 Matches</h2>
                  </div>
            </div>
           

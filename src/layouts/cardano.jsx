@@ -91,20 +91,20 @@ const ConnectWallet = ({ closeModal,  onSelectWallet  }) => {
 		};
 	
 	return (
-    <div className="fixed right-0 -top-0 p-5 items-center  justify-center w-96 z-50  bg-black bg-opacity-100 border rounded-md animateModal1">
-     <span className="close-button  text-3xl absolute top-2 right-4 cursor-pointer text-white" onClick={closeModal}>
+    <div className="fixed right-0 z-50 items-center justify-center p-5 bg-black bg-opacity-100 border rounded-md -top-0 w-96 animateModal1">
+     <span className="absolute text-3xl text-white cursor-pointer close-button top-2 right-4" onClick={closeModal}>
             &times;
          </span>
         {closeContent && (
 			<>
   <div>
-      <img className='w-12  mt-5' src='../../img/cardano.png' alt='icon'/>
+      <img className='w-12 mt-5' src='../../img/cardano.png' alt='icon'/>
       </div>
-             <div className='font-bold py-3  text-xl'>
+             <div className='py-3 text-xl font-bold'>
        <p className='text-white'> Cardano wallets</p>
         </div>
 
-      <p className=' text-sm mb-4 text-white'>By connecting your wallet, you agree to the <span className='text-[#1864F8]'>Terms & Conditions</span> and <span className='text-[#1864F8]'>Privacy Policy</span></p>
+      <p className='mb-4 text-sm text-white '>By connecting your wallet, you agree to the <span className='text-[#1864F8]'>Terms & Conditions</span> and <span className='text-[#1864F8]'>Privacy Policy</span></p>
 			</>
 		)}
        
@@ -153,15 +153,15 @@ const ConnectWallet = ({ closeModal,  onSelectWallet  }) => {
 							
 						{isHovered && (
                 <div className='additional-links absolute top-[52%] left-[27%] rounded-md w-8/12 border bg-slate-950'>
-                 <span className='flex m-3 border-b   p-2  rounded-md '>
+                 <span className='flex p-2 m-3 border-b rounded-md '>
 				<AccountCircleIcon style={{ fontSize: '4rem' ,color:'#2a2929' }} />
 				
 				<img  src={selectedWallet.icon} className='w-8 absolute translate-x-[100%] translate-y-[110%]'/>
 			
 				<div>
-					<p className='w-55 break-all font-bold text-white'><code>{truncatedAddress}</code></p>
+					<p className='font-bold text-white break-all w-55'><code>{truncatedAddress}</code></p>
 				
-						<p className='ml-1 text-md relative text-white'>₳ {Math.round(parseInt(lovelace) / 1000000)}</p>
+						<p className='relative ml-1 text-white text-md'>₳ {Math.round(parseInt(lovelace) / 1000000)}</p>
 						</div>
 				</span>
                  <NavLink
@@ -206,7 +206,7 @@ const ConnectWallet = ({ closeModal,  onSelectWallet  }) => {
                     onMouseLeave={handleSwitchWalletLeave}
                   >
 					<WalletIcon className='mr-2' style={{ color:'white' }}/>
-                 <span className='justify-between flex'>
+                 <span className='flex justify-between'>
 					<p className='text-white'>Switch wallet</p>
 						<ArrowForwardIosIcon className='p-1.5  absolute right-2'/>
                   </span>
